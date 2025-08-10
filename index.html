@@ -3,271 +3,142 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Slushy 2026 — Snow trip vibes</title>
-  <meta name="description" content="Sunny Japan snowboard trip energy — bright sky, film grain, 90s flash. Built fast, left imperfect on purpose." />
-  <meta name="theme-color" content="#0a4dbf" />
-
-  <!-- OG/Twitter placeholders (update og:url/og:image when live) -->
-  <meta property="og:title" content="Slushy 2026" />
-  <meta property="og:description" content="Sunny 90s snow-trip vibes." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://<your-username>.github.io/slushy-2026/" />
-  <meta property="og:image" content="https://<your-username>.github.io/slushy-2026/images/og.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <title>POWDER DAYS AHEAD — JAPAN 2026</title>
+  <meta name="description" content="Bluebird laps with friends. Myoko Kogen, Japan — 2026." />
+  <meta name="theme-color" content="#0b0b0b" />
 
   <style>
-    /* ======================
-       SUNNY 90s FILM VIBE TOKENS
-       ====================== */
+    /* ===== Design tokens (monochrome + subtle brand) ===== */
     :root{
-      /* Bright, sunny palette */
-      --bg: #0a1020;            /* deep navy for page chrome */
-      --surface: #0f1428;       /* section surface (dark, but less gray) */
-      --text: #f7fafc;          /* white-ish text */
-      --muted: #c9d3e6;         /* secondary text */
-      --accent: #ffd166;        /* sunny yellow */
-      --accent-2: #27c1e6;      /* sky cyan pop */
-      --border: #1f2744;
-
-      /* Type */
-      --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial;
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
-
-      /* Type scale */
-      --fs-900: clamp(2.4rem, 5.4vw, 4rem);    /* Hero title */
-      --fs-700: clamp(1.35rem, 2.8vw, 2rem);   /* Section heads */
-      --fs-500: 1rem;                           /* Body */
-      --fs-400: .92rem;
-
-      /* Spacing */
-      --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
-      --space-6:24px; --space-8:32px; --space-12:48px;
-
-      --radius: 16px;
-      --shadow-soft: 0 18px 50px rgba(0,0,0,.35);
-
-      /* Film grain intensity */
-      --grain-opacity: .12;
+      --bg:#0b0b0b; --surface:#141414; --muted:#bdbdbd; --text:#f5f5f5;
+      --border:#262626; --accent:#ffffff; /* keep neutral, edit later */
+      --radius:16px;
+      --fs-900:clamp(2rem,5vw,3.5rem);   /* H1 */
+      --fs-700:clamp(1rem,2.2vw,1.25rem);/* Subhead */
+      --fs-600:1.125rem;                  /* CTA / Nav */
+      --fs-500:1rem;                      /* Body */
+      --fs-400:.9rem;                     /* Small */
+      --space-2:8px; --space-4:16px; --space-6:24px; --space-8:32px; --space-12:48px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
     }
 
-    /* Base / reset-lite */
+    /* ===== Base ===== */
     *,*::before,*::after{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:var(--font-sans); color:var(--text); background:var(--bg);
-      line-height:1.55; -webkit-font-smoothing:antialiased;
-    }
-    img{max-width:100%; height:auto; display:block}
-    a{color:inherit; text-decoration:none}
-    button{font:inherit}
-    :focus-visible{outline:2px dashed var(--accent); outline-offset:2px}
-    .container{width:min(1100px,92vw); margin-inline:auto}
-    .tiny{font-size:.85rem; color:var(--muted)}
-    .surface{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow-soft)}
-    .section-title{font-size:var(--fs-700); margin:0 0 var(--space-4) 0}
+    body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, Arial}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    :focus-visible{outline:2px dashed #fff;outline-offset:3px}
 
-    /* Grain overlay (lighter than the dark version) */
-    .grain{
-      position:fixed; inset:0; pointer-events:none; z-index:10;
-      background-image:url("data:image/svg+xml;utf8,\
-        <svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'>\
-        <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter>\
-        <rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
-      mix-blend-mode:soft-light; opacity:var(--grain-opacity);
-    }
-    @media (prefers-reduced-motion:no-preference){
-      .grain{animation:grainShift 1.6s steps(2,end) infinite}
-      @keyframes grainShift{0%{transform:translate(0,0)}25%{transform:translate(-1%,1%)}50%{transform:translate(1%,-1%)}75%{transform:translate(-1%,-2%)}100%{transform:translate(0,0)}}
-    }
-    @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .grain{animation:none} }
+    .container{width:min(1120px,92vw);margin-inline:auto}
+    .surface{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
 
-    /* ======================
-       HERO (image-forward, sunny)
-       ====================== */
-    header{
-      position:relative; padding:0; border-bottom:1px solid var(--border);
-      background:linear-gradient(180deg, #0a4dbf 0%, #0a1020 100%);
-      isolation:isolate;
-    }
-    .hero-wrap{
-      position:relative; min-height: clamp(60vh, 68vh, 78vh); display:grid; align-items:end;
-      /* film border cue */
-      outline: 12px solid rgba(255,255,255,0.05); outline-offset: -12px; border-radius: 6px;
-    }
-    .hero-media{
-      position:absolute; inset:0; z-index:-2; overflow:hidden; border-radius:6px;
-    }
-    .hero-media picture, .hero-media img{width:100%; height:100%; object-fit:cover}
-    /* Gradient for text readability while keeping sunny look */
-    .hero-media::after{
-      content:""; position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 85%);
-    }
-    .hero-content{
-      position:relative; padding: clamp(24px, 5vw, 56px);
-    }
-    .hero-title{font-size:var(--fs-900); margin:0 0 var(--space-4) 0; letter-spacing:.4px}
-    .lead{font-size:var(--fs-700); color:var(--muted); margin:0 0 var(--space-6) 0}
-    .cta-row{display:flex; gap:var(--space-4); flex-wrap:wrap}
-    .btn{
-      padding:.75rem 1.1rem; border-radius:999px; border:1px solid rgba(255,255,255,.3); background:rgba(10,16,32,.2);
-      backdrop-filter: blur(4px); color:#fff; transition:transform .08s ease, border-color .2s ease, background .2s ease;
-    }
-    .btn:hover{transform:translateY(-1px); border-color:var(--accent)}
-    .btn-primary{background:linear-gradient(180deg, rgba(255,209,102,.35), rgba(255,209,102,.12))}
-    .btn-ghost{background:rgba(10,16,32,.25)}
+    /* ===== Top bar ===== */
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.08em}
+    .brand-dot{width:8px;height:8px;border-radius:50%;background:#fff;opacity:.9}
+    .nav-actions{display:flex;gap:10px}
+    .btn{border:1px solid var(--border);padding:.6rem .9rem;border-radius:999px;background:#101010;color:#fff}
+    .btn:hover{border-color:#fff}
+    .btn-primary{background:#fff;color:#000;font-weight:600}
 
-    /* Sections */
-    section{padding-block: clamp(32px, 6vw, 72px); border-bottom:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%)}
+    /* ===== Hero ===== */
+    header{padding-block:var(--space-6)}
+    .hero{display:grid;gap:var(--space-6)}
+    .hero h1{font-size:var(--fs-900);letter-spacing:.04em;text-align:center;margin:0}
+    .sub{font-size:var(--fs-700);text-align:center;color:var(--muted);margin-top:6px}
+    .cta-row{display:flex;justify-content:center;gap:10px;margin-top:var(--space-4)}
+    .hero-media{margin-top:var(--space-6)}
+    .hero-media .frame{overflow:hidden;border-radius:18px;border:1px solid var(--border)}
+    .hero-media img{width:100%;aspect-ratio:16/9;object-fit:cover}
 
-    /* Photo strip (kept) */
-    .strip{display:flex; gap:var(--space-4); overflow-x:auto; padding:var(--space-4); scroll-snap-type:x mandatory}
-    .strip figure{min-width:220px; max-width:260px; scroll-snap-align:start; background:#0b0f1f; border-radius:8px; border:1px solid var(--border)}
-    .caption{font-size:var(--fs-400); color:var(--muted); padding:.5rem .75rem}
+    /* ===== Stats ===== */
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-top:var(--space-8)}
+    .stat{display:grid;gap:6px;justify-items:center}
+    .stat .num{font-size:clamp(2rem,6vw,3rem);font-weight:700}
+    .stat .label{color:var(--muted)}
 
-    /* Gallery */
-    .gallery{column-count:2; column-gap:var(--space-4)}
-    .gallery figure{break-inside:avoid; margin:0 0 var(--space-4) 0; border:1px solid var(--border); border-radius:8px; overflow:hidden}
-    @media (min-width:900px){ .gallery{column-count:3} }
-    .gallery img{width:100%; filter:contrast(105%) saturate(112%) brightness(104%)}
+    /* ===== Cards row (3 up) ===== */
+    .cards{display:grid;grid-template-columns:1fr;gap:var(--space-6);margin-top:var(--space-8)}
+    .card{padding:14px}
+    .card .thumb{aspect-ratio:1/1;border-radius:12px;background:#0f0f0f;border:1px solid var(--border);display:grid;place-items:center;color:#5a5a5a}
+    .card h3{margin:.8rem 0 0 0;font-size:1rem}
 
-    .tags{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:var(--space-4)}
-    .tag{border:1px dashed var(--border); padding:.35rem .6rem; border-radius:999px; font-size:var(--fs-400); color:var(--muted)}
+    /* ===== Footer ===== */
+    footer{padding-block:var(--space-12);color:var(--muted);font-size:var(--fs-400)}
+    .footer-grid{display:grid;gap:10px;justify-items:start}
+    .footer-grid small{opacity:.9}
 
-    footer{padding-block:48px; text-align:center; color:var(--muted)}
+    /* ===== Responsive ===== */
+    @media (min-width:720px){
+      .cards{grid-template-columns:repeat(3,1fr)}
+    }
   </style>
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <a class="sr-only" href="#main">Skip to content</a>
+  <div class="container">
+    <!-- Top bar -->
+    <div class="topbar">
+      <div class="brand" aria-label="Logo">
+        <span class="brand-dot"></span><span>BOA</span>
+      </div>
+      <div class="nav-actions" role="group" aria-label="Top actions">
+        <a class="btn" href="#" target="_blank" rel="noopener">Open Link</a>
+        <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Sign Up</a>
+      </div>
+    </div>
 
-  <!-- HERO -->
-  <header>
-    <div class="container hero-wrap">
+    <!-- Hero -->
+    <header class="hero" id="home">
+      <h1>POWDER DAYS AHEAD</h1>
+      <p class="sub">JAPAN 2026 — 降雪の祭典</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#gallery">Book Now</a>
+      </div>
+
       <div class="hero-media">
-        <!-- Drop your hero image into /images/hero.webp (or .jpg) -->
-        <picture>
-          <!-- AVIF first if you have it -->
-          <!-- <source srcset="images/hero.avif" type="image/avif" /> -->
-          <source srcset="images/hero.webp.png" type="image/webp" />
-          <img src="images/hero.webp.png" alt="Sunny Japanese mountains with a snowboarder mid-action; bright sky, crisp snow spray, 90s film vibe." />
-          <!-- If using JPG instead, use: <img src="images/hero.jpg" alt="..."> -->
-        </picture>
-      </div>
-
-      <div class="hero-content">
-        <h1 class="hero-title">Slushy 2026</h1>
-        <p class="lead">Sunny, grainy, 90s snow‑trip energy.</p>
-        <div class="cta-row" role="group" aria-label="Primary actions">
-          <a class="btn btn-primary" href="#gallery">See the photos</a>
-          <a class="btn btn-ghost" href="#about">What is this?</a>
-          <button class="btn btn-ghost" id="shareBtn" type="button" aria-label="Share this site">Share</button>
+        <div class="frame surface">
+          <!-- Swap to .png if that’s what you uploaded -->
+          <img src="images/hero.png" alt="Sunny Myoko Kogen scene with a snowboarder mid‑air; blue sky, bright snow." />
         </div>
       </div>
-    </div>
-  </header>
 
-  <main id="main">
-    <!-- Photo strip -->
-    <section aria-labelledby="strip-title">
-      <div class="container">
-        <h2 id="strip-title" class="section-title">First sunny laps</h2>
-        <div class="strip surface" aria-label="Disposable-style photo strip">
-          <figure>
-            <img src="images/strip-1.jpg" alt="Friends on a chairlift under bright blue sky; film grain visible." loading="eager" />
-            <figcaption class="caption">Lift chat, bluebird sky.</figcaption>
-          </figure>
-          <figure>
-            <img src="images/strip-2.jpg" alt="Wide slope with clean corduroy; tiny riders carving; sunny highlights." loading="lazy" />
-            <figcaption class="caption">Fresh cord vibes.</figcaption>
-          </figure>
-          <figure>
-            <img src="images/strip-3.jpg" alt="Close-up of onigiri and canned coffee on snow with hard flash." loading="lazy" />
-            <figcaption class="caption">Snack stop excellence.</figcaption>
-          </figure>
-          <figure>
-            <img src="images/strip-4.jpg" alt="Board spray in the sun; sparkling snow crystals; 90s look." loading="lazy" />
-            <figcaption class="caption">Spray &amp; sun.</figcaption>
-          </figure>
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat">
+          <div class="num">5</div>
+          <div class="label">Days Shredding</div>
+        </div>
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="label">Mountains</div>
         </div>
       </div>
-    </section>
 
-    <!-- About -->
-    <section id="about" aria-labelledby="about-title">
-      <div class="container">
-        <h2 id="about-title" class="section-title">What’s Slushy?</h2>
-        <div class="surface" style="padding:1rem;">
-          <p>
-            A one‑page memory board for a sunny Japan snowboard trip — bluebird days, film grain, and on‑camera flash. Built fast, left imperfect on purpose.
-          </p>
-          <div class="tags" aria-label="Vibe tags">
-            <span class="tag">#bluebird</span>
-            <span class="tag">#grain</span>
-            <span class="tag">#flash</span>
-            <span class="tag">#90s</span>
-            <span class="tag">#ramen‑break</span>
-          </div>
-        </div>
+      <!-- Cards -->
+      <section class="cards" id="gallery" aria-label="Preview cards">
+        <article class="card surface">
+          <div class="thumb">■</div>
+          <h3>Bluebird Laps</h3>
+        </article>
+        <article class="card surface">
+          <div class="thumb">●</div>
+          <h3>Night Food Runs</h3>
+        </article>
+        <article class="card surface">
+          <div class="thumb">▲</div>
+          <h3>Road Trips</h3>
+        </article>
+      </section>
+    </header>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid">
+        <small><strong>Location</strong><br>Myoko Kogen, Japan</small>
+        <small><strong>Info</strong><br>Trip FAQ &nbsp;•&nbsp; 2026 Countdown</small>
       </div>
-    </section>
-
-    <!-- When & Where -->
-    <section aria-labelledby="ww-title">
-      <div class="container">
-        <h2 id="ww-title" class="section-title">When &amp; Where</h2>
-        <div class="surface" style="padding:1rem;">
-          <p><strong>Date:</strong> Jan 2026</p>
-          <p><strong>Place:</strong> Nagano / Niigata area (JP)</p>
-          <p class="tiny">Details are fuzzy — it’s a vibe.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery" aria-labelledby="gallery-title">
-      <div class="container">
-        <h2 id="gallery-title" class="section-title">The Roll</h2>
-        <p class="tiny" style="margin-bottom:var(--space-4)">Unedited. Sunny. Unbothered.</p>
-        <div class="gallery" aria-label="Gallery grid">
-          <!-- Replace with your real images in /images -->
-          <figure><img src="images/grid-1.jpg" alt="Sunny slope with riders; long shadows; crisp sky." loading="lazy"></figure>
-          <figure><img src="images/grid-2.jpg" alt="Friends laughing at base area; high exposure; film border." loading="lazy"></figure>
-          <figure><img src="images/grid-3.jpg" alt="Close‑up ramen lunch; flash glare; saturated colors." loading="lazy"></figure>
-          <figure><img src="images/grid-4.jpg" alt="Board against snowbank; neon jacket; 90s look." loading="lazy"></figure>
-          <figure><img src="images/grid-5.jpg" alt="Summit view with Japan Alps; sparkling snow." loading="lazy"></figure>
-          <figure><img src="images/grid-6.jpg" alt="Goggles selfie; overexposed highlights; grain." loading="lazy"></figure>
-          <figure><img src="images/grid-7.jpg" alt="Car park kit-up; bright sun; lens flare." loading="lazy"></figure>
-          <figure><img src="images/grid-8.jpg" alt="Night street with izakaya lanterns; flash; snow drift." loading="lazy"></figure>
-          <figure><img src="images/grid-9.jpg" alt="Board spray in golden hour; glittering snow." loading="lazy"></figure>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>Send this to the group chat.</p>
-      <p class="tiny">Made with AI + caffeine.</p>
-    </div>
-  </footer>
-
-  <script>
-    // Share button
-    (function(){
-      const btn = document.getElementById('shareBtn');
-      if(!btn) return;
-      btn.addEventListener('click', async () => {
-        const data = { title: 'Slushy 2026', text: 'Sunny 90s snow‑trip vibes', url: location.href };
-        if (navigator.share) { try { await navigator.share(data); } catch(e){} }
-        else {
-          try{ await navigator.clipboard.writeText(location.href);
-               btn.textContent = 'Link copied!'; setTimeout(()=>btn.textContent='Share',1600);
-          }catch(e){ alert('Copy this link: ' + location.href); }
-        }
-      });
-    })();
-  </script>
+    </footer>
+  </div>
 </body>
 </html>
