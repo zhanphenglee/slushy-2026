@@ -5,44 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>POWDER DAYS AHEAD — JAPAN 2026</title>
   <meta name="description" content="Bluebird laps with friends. Myoko Kogen, Japan — 2026." />
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="theme-color" content="#ffffff" />
 
   <style>
-    /* ===== Design tokens (monochrome + subtle brand) ===== */
     :root{
-      --bg:#0b0b0b; --surface:#141414; --muted:#bdbdbd; --text:#f5f5f5;
-      --border:#262626; --accent:#ffffff; /* keep neutral, edit later */
+      --bg:#ffffff; --surface:#f9f9f9; --muted:#555555; --text:#111111;
+      --border:#e0e0e0; --accent:#000000;
       --radius:16px;
-      --fs-900:clamp(2rem,5vw,3.5rem);   /* H1 */
-      --fs-700:clamp(1rem,2.2vw,1.25rem);/* Subhead */
-      --fs-600:1.125rem;                  /* CTA / Nav */
-      --fs-500:1rem;                      /* Body */
-      --fs-400:.9rem;                     /* Small */
+      --fs-900:clamp(2rem,5vw,3.5rem);
+      --fs-700:clamp(1rem,2.2vw,1.25rem);
+      --fs-600:1.125rem;
+      --fs-500:1rem;
+      --fs-400:.9rem;
       --space-2:8px; --space-4:16px; --space-6:24px; --space-8:32px; --space-12:48px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --shadow:0 4px 16px rgba(0,0,0,.06);
     }
 
-    /* ===== Base ===== */
     *,*::before,*::after{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
     body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, Arial}
     img{display:block;max-width:100%;height:auto}
     a{color:inherit;text-decoration:none}
-    :focus-visible{outline:2px dashed #fff;outline-offset:3px}
+    :focus-visible{outline:2px dashed #000;outline-offset:3px}
 
     .container{width:min(1120px,92vw);margin-inline:auto}
     .surface{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
 
-    /* ===== Top bar ===== */
+    /* Top bar */
     .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.08em}
-    .brand-dot{width:8px;height:8px;border-radius:50%;background:#fff;opacity:.9}
+    .brand-dot{width:8px;height:8px;border-radius:50%;background:var(--text);opacity:.9}
     .nav-actions{display:flex;gap:10px}
-    .btn{border:1px solid var(--border);padding:.6rem .9rem;border-radius:999px;background:#101010;color:#fff}
-    .btn:hover{border-color:#fff}
-    .btn-primary{background:#fff;color:#000;font-weight:600}
+    .btn{border:1px solid var(--border);padding:.6rem .9rem;border-radius:999px;background:transparent;color:var(--text)}
+    .btn:hover{border-color:var(--text)}
+    .btn-primary{background:var(--text);color:var(--bg);font-weight:600}
 
-    /* ===== Hero ===== */
+    /* Hero */
     header{padding-block:var(--space-6)}
     .hero{display:grid;gap:var(--space-6)}
     .hero h1{font-size:var(--fs-900);letter-spacing:.04em;text-align:center;margin:0}
@@ -52,24 +50,23 @@
     .hero-media .frame{overflow:hidden;border-radius:18px;border:1px solid var(--border)}
     .hero-media img{width:100%;aspect-ratio:16/9;object-fit:cover}
 
-    /* ===== Stats ===== */
+    /* Stats */
     .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-top:var(--space-8)}
     .stat{display:grid;gap:6px;justify-items:center}
     .stat .num{font-size:clamp(2rem,6vw,3rem);font-weight:700}
     .stat .label{color:var(--muted)}
 
-    /* ===== Cards row (3 up) ===== */
+    /* Cards */
     .cards{display:grid;grid-template-columns:1fr;gap:var(--space-6);margin-top:var(--space-8)}
     .card{padding:14px}
-    .card .thumb{aspect-ratio:1/1;border-radius:12px;background:#0f0f0f;border:1px solid var(--border);display:grid;place-items:center;color:#5a5a5a}
+    .card .thumb{aspect-ratio:1/1;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:grid;place-items:center;color:#999}
     .card h3{margin:.8rem 0 0 0;font-size:1rem}
 
-    /* ===== Footer ===== */
+    /* Footer */
     footer{padding-block:var(--space-12);color:var(--muted);font-size:var(--fs-400)}
     .footer-grid{display:grid;gap:10px;justify-items:start}
     .footer-grid small{opacity:.9}
 
-    /* ===== Responsive ===== */
     @media (min-width:720px){
       .cards{grid-template-columns:repeat(3,1fr)}
     }
@@ -77,19 +74,17 @@
 </head>
 <body>
   <div class="container">
-    <!-- Top bar -->
     <div class="topbar">
-      <div class="brand" aria-label="Logo">
+      <div class="brand">
         <span class="brand-dot"></span><span>BOA</span>
       </div>
-      <div class="nav-actions" role="group" aria-label="Top actions">
-        <a class="btn" href="#" target="_blank" rel="noopener">Open Link</a>
-        <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Sign Up</a>
+      <div class="nav-actions">
+        <a class="btn" href="#">Open Link</a>
+        <a class="btn btn-primary" href="#">Sign Up</a>
       </div>
     </div>
 
-    <!-- Hero -->
-    <header class="hero" id="home">
+    <header class="hero">
       <h1>POWDER DAYS AHEAD</h1>
       <p class="sub">JAPAN 2026 — 降雪の祭典</p>
       <div class="cta-row">
@@ -98,12 +93,10 @@
 
       <div class="hero-media">
         <div class="frame surface">
-          <!-- Swap to .png if that’s what you uploaded -->
-          <img src="images/hero.png" alt="Sunny Myoko Kogen scene with a snowboarder mid‑air; blue sky, bright snow." />
+          <img src="images/hero.png" alt="Sunny Myoko Kogen snowboard jump" />
         </div>
       </div>
 
-      <!-- Stats -->
       <div class="stats">
         <div class="stat">
           <div class="num">5</div>
@@ -115,8 +108,7 @@
         </div>
       </div>
 
-      <!-- Cards -->
-      <section class="cards" id="gallery" aria-label="Preview cards">
+      <section class="cards" id="gallery">
         <article class="card surface">
           <div class="thumb">■</div>
           <h3>Bluebird Laps</h3>
@@ -132,11 +124,10 @@
       </section>
     </header>
 
-    <!-- Footer -->
     <footer>
       <div class="footer-grid">
         <small><strong>Location</strong><br>Myoko Kogen, Japan</small>
-        <small><strong>Info</strong><br>Trip FAQ &nbsp;•&nbsp; 2026 Countdown</small>
+        <small><strong>Info</strong><br>Trip FAQ • 2026 Countdown</small>
       </div>
     </footer>
   </div>
