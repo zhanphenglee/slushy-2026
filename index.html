@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Meta basics -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO placeholders (edit in Section I notes) -->
+  <title>Slushy 2026 — a tiny vibe site</title>
+  <meta name="description" content="Disposable‑camera energy: grain, flash, blown highlights. Built fast, left imperfect on purpose." />
+  <meta name="theme-color" content="#0f0f10" />
+
+  <!-- Open Graph / Twitter (placeholders) -->
+  <meta property="og:title" content="Slushy 2026" />
+  <meta property="og:description" content="Disposable‑camera energy: grain, flash, blown highlights." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com" />
+  <meta property="og:image" content="https://example.com/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    /* ======================
+       DESIGN TOKENS
+       ====================== */
+    :root{
+      /* Color — warm 90s flash vibe */
+      --bg:#0f0f10;          /* page background */
+      --surface:#17181a;     /* cards/sections */
+      --text:#f4f4f4;        /* main text */
+      --muted:#b7b7b7;       /* secondary text */
+      --accent:#ffd166;      /* buttery highlight */
+      --accent-2:#ff6b6b;    /* coral pop */
+      --border:#2a2b2e;
+
+      /* Type */
+      --font-sans: ui-sans-serif, system-ui,-apple-system,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
+      --font-mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+
+      /* Type scale (mobile-first) */
+      --fs-900: clamp(2.2rem, 4.5vw, 3.6rem);  /* Hero */
+      --fs-700: clamp(1.4rem, 2.6vw, 2rem);    /* Section headings */
+      --fs-500: 1rem;                          /* Body */
+      --fs-400: 0.9rem;                        /* Small */
+
+      /* Spacing */
+      --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+      --space-6:24px; --space-8:32px; --space-12:48px;
+
+      /* Radius & effects */
+      --radius:16px;
+      --shadow-soft:0 10px 30px rgba(0,0,0,.25);
+
+      /* Grain intensity (0–1) */
+      --grain-opacity:.18;
+    }
+
+    /* Base reset-lite */
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:var(--font-sans); color:var(--text); background:var(--bg);
+      line-height:1.55; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    img{max-width:100%; display:block; height:auto;}
+    a{color:inherit; text-decoration:none}
+    button{font:inherit}
+    :focus-visible{outline:2px dashed var(--accent); outline-offset:2px}
+
+    /* Utility */
+    .container{width:min(1100px, 92vw); margin-inline:auto}
+    .stack>*{margin-block:var(--space-4)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Film grain overlay */
+    .grain{
+      position:fixed; inset:0; pointer-events:none; z-index:9999;
+      background-image: url("data:image/svg+xml;utf8,      <svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'>      <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter>      <rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+      mix-blend-mode:soft-light; opacity:var(--grain-opacity);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .grain{animation:grainShift 1.6s steps(2,end) infinite}
+      @keyframes grainShift{
+        0%{transform:translate(0,0)} 25%{transform:translate(-1%,1%)} 50%{transform:translate(1%,-1%)} 75%{transform:translate(-1%,-2%)} 100%{transform:translate(0,0)}
+      }
+    }
+    @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .grain{animation:none} }
+
+    /* Header / Hero */
+    header{
+      position:relative; padding-block: clamp(56px, 12vw, 120px);
+      background: radial-gradient(1200px 300px at 50% -20%, rgba(255,209,102,.15), transparent 60%);
+      border-bottom:1px solid var(--border);
+    }
+    .film-border{
+      /* subtle film border cue */
+      outline: 12px solid rgba(255,255,255,0.04);
+      outline-offset: -12px;
+      border-radius: 4px;
+    }
+    .hero-title{font-size:var(--fs-900); letter-spacing:.5px; margin:0}
+    .lead{font-size:var(--fs-700); color:var(--muted); margin-top:var(--space-4)}
+    .cta-row{display:flex; gap:var(--space-4); flex-wrap:wrap; margin-top:var(--space-6)}
+    .btn{
+      padding:.72rem 1.1rem; border-radius:999px; border:1px solid var(--border); background:transparent; color:var(--text);
+      transition:transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover{transform:translateY(-1px); border-color:var(--accent)}
+    .btn-primary{background:linear-gradient(180deg, rgba(255,209,102,.25), rgba(255,209,102,.05)); border-color:rgba(255,209,102,.5)}
+    .btn-ghost{background:transparent}
+    .tagline{margin-top:var(--space-2); font-size:var(--fs-500); color:var(--muted)}
+
+    /* Section shells */
+    section{padding-block: clamp(32px, 6vw, 72px); border-bottom:1px solid var(--border); background:
+      linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%)}
+    section .section-title{font-size:var(--fs-700); margin:0 0 var(--space-4) 0}
+    .surface{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow-soft)}
+
+    /* Photo strip — horizontal scroll, no heavy JS */
+    .strip{
+      display:flex; gap:var(--space-4); overflow-x:auto; padding:var(--space-4);
+      scroll-snap-type:x mandatory;
+    }
+    .strip figure{
+      min-width: 220px; max-width: 260px; scroll-snap-align:start; background:#111; border-radius:6px; border:1px solid var(--border);
+    }
+    .strip img{aspect-ratio:3/4; object-fit:cover; filter:contrast(105%) saturate(110%) brightness(105%);}
+    .caption{font-size:var(--fs-400); color:var(--muted); padding:.5rem .75rem}
+
+    /* About / tags */
+    .tags{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:var(--space-4)}
+    .tag{border:1px dashed var(--border); padding:.35rem .6rem; border-radius:999px; font-size:var(--fs-400); color:var(--muted)}
+
+    /* When/Where mini card */
+    .ww{display:grid; gap:var(--space-4)}
+    .mini-map{aspect-ratio:16/9; background:
+      linear-gradient(0deg, rgba(255,209,102,.08), transparent),
+      radial-gradient(60% 50% at 70% 30%, rgba(255,107,107,.15), transparent 60%),
+      #0e0e10; border:1px solid var(--border); border-radius:8px}
+
+    /* Gallery — simple CSS columns for a film-dump feel */
+    .gallery{column-count: 2; column-gap: var(--space-4)}
+    .gallery figure{break-inside: avoid; margin:0 0 var(--space-4) 0; border:1px solid var(--border); border-radius:6px; overflow:hidden}
+    .gallery img{width:100%; height:auto; display:block; filter:contrast(105%) saturate(110%) brightness(102%)}
+    @media (min-width: 900px){ .gallery{column-count: 3} }
+
+    /* Stickers row */
+    .stickers{display:flex; flex-wrap:wrap; gap:var(--space-4)}
+    .sticker{
+      padding:.55rem .8rem; border-radius:10px; background: conic-gradient(from 120deg at 70% 20%, rgba(255,209,102,.25), transparent);
+      border:1px solid var(--border); font-family:var(--font-mono); font-size:.9rem
+    }
+
+    /* Footer */
+    footer{padding-block:48px; text-align:center; color:var(--muted)}
+    .tiny{font-size:.85rem; color:var(--muted)}
+
+  </style>
+</head>
+<body>
+  <!-- Grain overlay for vibe -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container film-border">
+      <h1 class="hero-title">Slushy 2026</h1>
+      <p class="lead">Flash on. Grain up. Good chaos only.</p>
+      <p class="tagline">A tiny vibe site for the homies.</p>
+
+      <div class="cta-row" role="group" aria-label="Primary actions">
+        <a class="btn btn-primary" href="#gallery">See the photos</a>
+        <a class="btn btn-ghost" href="#about">What is this?</a>
+        <button class="btn btn-ghost" id="shareBtn" type="button" aria-label="Share this site">Share</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Photo strip -->
+    <section aria-labelledby="strip-title">
+      <div class="container">
+        <h2 id="strip-title" class="section-title">First flash roll</h2>
+        <div class="strip surface" aria-label="Disposable-style photo strip">
+          <!-- Replace src with your images -->
+          <figure>
+            <img src="strip-1.jpg" alt="A candid photo of friends indoors with strong on‑camera flash; faces slightly overexposed; casual 90s feel." loading="eager" />
+            <figcaption class="caption">Accidental masterpiece.</figcaption>
+          </figure>
+          <figure>
+            <img src="strip-2.jpg" alt="Street scene at night with neon signs; visible film grain; high contrast." loading="lazy" />
+            <figcaption class="caption">Flash went brrr.</figcaption>
+          </figure>
+          <figure>
+            <img src="strip-3.jpg" alt="Close‑up of food on a table; bright glare from flash; saturated colors." loading="lazy" />
+            <figcaption class="caption">Too close; just right.</figcaption>
+          </figure>
+          <figure>
+            <img src="strip-4.jpg" alt="Blurred motion of someone laughing; harsh shadow; point‑and‑shoot look." loading="lazy" />
+            <figcaption class="caption">Motion blur mood.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="section-title">What’s Slushy?</h2>
+        <div class="stack">
+          <p class="surface" style="padding:1rem;">
+            A one‑page memory board with disposable‑camera energy — blown highlights, on‑camera flash, and questionable framing. Built fast, left imperfect on purpose.
+          </p>
+          <div class="tags" aria-label="Vibe tags">
+            <span class="tag">#grainy</span>
+            <span class="tag">#flash</span>
+            <span class="tag">#overexposed</span>
+            <span class="tag">#90s</span>
+            <span class="tag">#film-border</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- When & Where (optional) -->
+    <section aria-labelledby="ww-title">
+      <div class="container ww">
+        <h2 id="ww-title" class="section-title">When &amp; Where</h2>
+        <div class="surface" style="padding:1rem;">
+          <p><strong>Date:</strong> Jan 2026</p>
+          <p><strong>Place:</strong> Somewhere with neon and noodles</p>
+          <p class="tiny">Details are intentionally fuzzy — it’s a vibe.</p>
+        </div>
+        <div class="mini-map" aria-hidden="true" title="Tiny map placeholder"></div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <h2 id="gallery-title" class="section-title">The Roll</h2>
+        <p class="tiny" style="margin-bottom:var(--space-4)">Unedited. Uncorrected. Unbothered.</p>
+        <div class="gallery" aria-label="Gallery grid">
+          <!-- Replace src with your images -->
+          <figure><img src="grid-1.jpg" alt="Night street with neon; heavy grain; on‑camera flash elements." loading="lazy"></figure>
+          <figure><img src="grid-2.jpg" alt="Friends laughing in a cafe; blown highlights; casual snapshot." loading="lazy"></figure>
+          <figure><img src="grid-3.jpg" alt="Close‑up of noodles reflecting flash; saturated colors." loading="lazy"></figure>
+          <figure><img src="grid-4.jpg" alt="Skylines with slight motion blur; point‑and‑shoot feel." loading="lazy"></figure>
+          <figure><img src="grid-5.jpg" alt="Off‑center portrait; harsh shadow to the right." loading="lazy"></figure>
+          <figure><img src="grid-6.jpg" alt="Hands clinking drinks; bright glare; grain visible." loading="lazy"></figure>
+          <figure><img src="grid-7.jpg" alt="Dim hallway with flash; vignette and grain." loading="lazy"></figure>
+          <figure><img src="grid-8.jpg" alt="Candid dance floor moment; bloom around highlights." loading="lazy"></figure>
+          <figure><img src="grid-9.jpg" alt="Table full of late‑night snacks; direct flash look." loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stickers -->
+    <section aria-labelledby="stickers-title">
+      <div class="container">
+        <h2 id="stickers-title" class="section-title">Stickers</h2>
+        <div class="stickers">
+          <span class="sticker">flash only</span>
+          <span class="sticker">grain gang</span>
+          <span class="sticker">oops all highlights</span>
+          <span class="sticker">film‑ish</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Send this to the group chat.</p>
+      <p class="tiny">Made with AI + caffeine.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tiny JS: Share button with graceful fallback
+    (function(){
+      const btn = document.getElementById('shareBtn');
+      if(!btn) return;
+      btn.addEventListener('click', async () => {
+        const shareData = { title: 'Slushy 2026', text: 'Disposable‑camera energy.', url: window.location.href };
+        if (navigator.share) {
+          try{ await navigator.share(shareData); }catch(e){};
+        } else {
+          // Fallback: copy URL
+          try{
+            await navigator.clipboard.writeText(window.location.href);
+            btn.textContent = 'Link copied!';
+            setTimeout(()=>{ btn.textContent = 'Share'; }, 1600);
+          }catch(e){
+            alert('Copy this link: ' + window.location.href);
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
