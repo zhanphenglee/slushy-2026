@@ -563,6 +563,110 @@ summary::-webkit-details-marker{display:none}
   border-top: 1px solid rgba(102, 126, 234, 0.1);
 }
 
+/* Mobile responsive styles for calendar */
+@media (max-width: 768px) {
+  .calendar-card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+  
+  .calendar-card-header {
+    margin-right: 0;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .calendar-card-content {
+    width: 100%;
+  }
+  
+  .calendar-card-image,
+  .calendar-card-media {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    clip-path: none;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .calendar-card-video {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    min-width: unset;
+    min-height: unset;
+  }
+  
+  .calendar-card-toggle {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    align-self: flex-end;
+    margin-top: -8px;
+  }
+  
+  .calendar-phase-location {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+  
+  .calendar-card-title {
+    font-size: 1.3rem;
+  }
+  
+  .calendar-title-japanese {
+    font-size: 0.9rem;
+  }
+  
+  .calendar-date {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  
+  .calendar-card-image,
+  .calendar-card-media,
+  .calendar-card-video {
+    height: 160px;
+  }
+  
+  .calendar-card-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  
+  .calendar-phase-location {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+  
+  .calendar-card-title {
+    font-size: 1.1rem;
+  }
+  
+  .calendar-title-japanese {
+    font-size: 0.8rem;
+  }
+  
+  .calendar-date {
+    font-size: 0.8rem;
+  }
+  
+  .calendar-card-body {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
 /* ====== Typography ====== */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Barlow Semi Condensed', ui-sans-serif, system-ui, sans-serif;
