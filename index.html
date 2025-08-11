@@ -10,57 +10,39 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <h1></h1>
+    <p class="hero-sub"></p>
+    <div class="cta-row">
+      <a class="btn btn-primary" id="cta-primary" href="#people">The Crew</a>
+      <a class="btn" id="cta-secondary" href="#calendar">Trip Details</a>
+    </div>
+  </header>
+
   <div class="container">
 
-    <!-- Topbar (brand can be filled from JSON if desired) -->
-    <div class="topbar" aria-label="Top">
-      <div class="brand"><span class="brand-dot"></span><span id="brand-text"></span></div>
-      <div class="nav-actions" role="group" aria-label="Top actions">
-        <a class="btn" href="#people">The Crew</a>
-        <a class="btn btn-primary" href="#calendar">Trip Details</a>
-      </div>
-    </div>
-
-    <!-- HERO -->
-    <header class="hero" id="hero">
-      <h1></h1>
-      <p class="hero-sub"></p>
-      <div class="cta-row">
-        <a class="btn btn-primary" id="cta-primary" href="#"></a>
-        <a class="btn" id="cta-secondary" href="#"></a>
-      </div>
-
-      <div class="hero-media">
-        <div class="frame surface">
-          <img id="hero-image" src="" alt="Trip hero image" />
-        </div>
-      </div>
-    </header>
-
     <!-- PEOPLE -->
-    <section id="people" class="section" aria-labelledby="people-title">
+    <section id="people" class="people section" aria-labelledby="people-title">
       <h2 id="people-title"></h2>
-      <p id="people-intro" class="muted"></p>
+      <p id="people-intro" class="intro"></p>
 
-      <div id="crew-spotlight" class="grid-people spotlight-4"></div>
-
-      <div class="people-actions">
-        <button class="btn" id="toggleCrew" type="button" aria-expanded="false" aria-controls="crew-more"></button>
-      </div>
-
-      <div id="crew-more" class="grid-people" hidden></div>
+      <div id="crew-spotlight" class="grid-people spotlight-10"></div>
     </section>
 
     <!-- CALENDAR -->
-    <section id="calendar" class="section" aria-labelledby="cal-title">
+    <section id="calendar" class="calendar section" aria-labelledby="cal-title">
       <h2 id="cal-title"></h2>
-      <div class="accordion"></div>
+      <div class="calendar-cards"></div>
     </section>
 
     <!-- GEAR LIST -->
-    <section id="gear" class="section" aria-labelledby="gear-title">
+    <section class="gear section" id="gear">
       <h2 id="gear-title"></h2>
-      <ul class="list" role="list"></ul>
+      <p class="intro" id="gear-intro"></p>
+      <ul class="gear-list" id="gear-list">
+        <!-- Gear items will be populated by JavaScript -->
+      </ul>
     </section>
 
     <footer class="section" style="padding-block:32px;">

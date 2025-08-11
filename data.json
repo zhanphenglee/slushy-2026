@@ -1,51 +1,86 @@
 {
   "site": {
-    "brand": "BOA",
+    "brand": "",
     "footer": "Myoko / Nagano, Japan — Jan 2026 • Built fast, left imperfect on purpose."
   },
 
   "hero": {
-    "title": "Slushy 2026 Trip.",
+    "title": "Slushy 2026 -- 解けかけの雪",
     "subhead": "Epic powder. Big crew. High stoke.",
     "hero_image": "images/hero.png",
-    "cta_primary": { "label": "Join the Hype", "href": "#people" },
+    "cta_primary": { "label": "The Crew", "href": "#people" },
     "cta_secondary": { "label": "Trip Details", "href": "#calendar" }
   },
 
   "people": {
     "title": "People",
-    "intro": "Spotlight on 4 riders. Expand to see the full crew.",
+    "intro": "Zero drama, full stoke.",
     "spotlight": [
-      { "name": "Zhan", "blurb": "Rider. Carve.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-zhan.jpg" },
-      { "name": "Leah", "blurb": "Swooper.", "level": "Beginner",   "zeros": 2, "avatar": "images/pax-leah.jpg" },
-      { "name": "Kai",  "blurb": "Joker.",  "level": "Intermediate", "zeros": 4, "avatar": "images/pax-kai.jpg" },
-      { "name": "Ivan", "blurb": "Mr. Lines.", "level": "Advanced", "zeros": 5, "avatar": "images/pax-ivan.jpg" }
-    ],
-    "more": [
-      { "name": "Aki",  "blurb": "Quiet assassin.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-5.jpg" },
-      { "name": "Miu",  "blurb": "Late‑night DJ.", "level": "Beginner",     "zeros": 2, "avatar": "images/pax-6.jpg" },
-      { "name": "Ken",  "blurb": "Park rat.",       "level": "Intermediate", "zeros": 4, "avatar": "images/pax-7.jpg" },
-      { "name": "Rei",  "blurb": "Glades enjoyer.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-8.jpg" },
-      { "name": "Bo",   "blurb": "Trip mom.",       "level": "Beginner",     "zeros": 1, "avatar": "images/pax-9.jpg" },
-      { "name": "Yuki", "blurb": "Lines & snacks.", "level": "Intermediate", "zeros": 2, "avatar": "images/pax-10.jpg" }
-    ],
-    "toggle_more_closed": "And more legends — show all",
-    "toggle_more_open": "Show less"
+      { "name": "Zhan", "blurb": "Member 0", "level": "Beginner-Intermediate", "zeros": 3, "avatar": "images/pax-zhan.jpg" },
+      { "name": "Viv", "blurb": "Prodigy", "level": "Beginner-Intermediate", "zeros": 4, "avatar": "images/pax-viv.jpg" },
+      { "name": "JH", "blurb": "Stronk", "level": "Beginner-Intermediate", "zeros": 8, "avatar": "images/pax-jh.jpg" },
+      { "name": "BC", "blurb": "Trickster", "level": "Beginner-Intermediate", "zeros": 1, "avatar": "images/pax-bc.jpg" },
+      { "name": "Zee", "blurb": "Mommy", "level": "Beginner", "zeros": 27, "avatar": "images/pax-zee.jpg" },
+      { "name": "Chris", "blurb": "Ski master", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-chris.jpg" },
+      { "name": "Linn", "blurb": "Vibes chaser", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-linn.jpg" },
+      { "name": "Gerald", "blurb": "Visa Concierge", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-gerald.jpg" },
+      { "name": "Clare", "blurb": "Fallproof", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-clare.jpg" },
+      { "name": "Sherilyn", "blurb": "Reservation Artist", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-sherilyn.jpg" }
+    ]
   },
 
   "calendar": {
     "title": "Trip Calendar",
-    "days": [
-      { "title": "Day 1 — Tokyo link‑up & transfer", "body": "Shinkansen up; grocery run; welcome dinner; quick plan; vibes set to high." },
-      { "title": "Day 2 — Myoko: corduroy morning, soft laps", "body": "Easy groomers, side hits, village stroll, onsen." },
-      { "title": "Day 3 — Powder hunt (if storm)", "body": "Trees and gullies; safety brief; ramen break; film dump at night." },
-      { "title": "Day 4 — Road trip option (Nozawa / Madarao)", "body": "Carve & view day. Dinner in town, early night." },
-      { "title": "Day 5 — Freeride + photos + wrap party", "body": "Best‑of laps, group photos, pack up, head out." }
+    "phases": [
+      {
+        "phase": "Phase 1",
+        "date": "17/1",
+        "title": "Land, Linkup & Transfer",
+        "japanese": "到着・集合・移動",
+        "location": "Tokyo → Myoko",
+        "photo": "images/calendar/phase-1.MOV",
+        "photoFallback": "https://picsum.photos/400/300?random=1",
+        "mediaType": "video",
+        "body": "Touchdown in Tokyo! Crew linkup at the airport, grab some konbini snacks, then hop on our rentals for the scenic ride to Myoko. Evening arrival means we'll settle into our digs and get those rental boards sorted. Tomorrow we ride! 🏂"
+      },
+      {
+        "phase": "Phase 2", 
+        "date": "18-22/1",
+        "title": "Powder Paradise & Culture",
+        "japanese": "パウダーパラダイス・文化体験",
+        "location": "Myoko",
+        "photo": "images/calendar/phase-2.MOV",
+        "photoFallback": "https://picsum.photos/400/300?random=2",
+        "mediaType": "video",
+        "body": "Five days of pure snowboarding bliss! Wake up to fresh powder, carve through pristine groomers, and hunt for those hidden tree runs. After epic sessions, we'll soak in traditional onsens, visit the historic Zenkoji Temple, and share stories over daily beers. This is what we came for - epic lines, deep powder, and unforgettable memories. The mountains are calling! 🗻❄️"
+      },
+      {
+        "phase": "Phase 3",
+        "date": "23-24/1", 
+        "title": "Tokyo Takeover",
+        "japanese": "東京テイクオーバー",
+        "location": "Tokyo",
+        "photo": "images/calendar/phase-3.MOV",
+        "photoFallback": "https://picsum.photos/400/300?random=3",
+        "mediaType": "video",
+        "body": "Back to the big city! Free and easy exploration of Tokyo's endless wonders. From the neon-lit streets of Shibuya to the late-night izakaya parties, we're making the most of every moment. The city never sleeps, and neither do we! 🌃🍻"
+      },
+      {
+        "phase": "Phase 4",
+        "date": "25/1",
+        "title": "Until Next Time",
+        "japanese": "また今度",
+        "location": "Tokyo → Home",
+        "photo": "images/calendar/phase-4.jpg",
+        "mediaType": "image",
+        "body": "All good things must come to an end... but the memories last forever. Pack up those epic stories and head back home. Until next time, the powder will be waiting! じゃあね、また会おう！ ✈️🏂"
+      }
     ]
   },
 
   "gear": {
     "title": "Gear List & Advice",
+    "intro": "Essential equipment and tips for your snowboarding adventure.",
     "items": [
       "Board & bindings: all‑mountain/freeride; check screws; cold‑temp wax.",
       "Clothing: waterproof jacket/pants, mid‑layer fleece, thermal base.",

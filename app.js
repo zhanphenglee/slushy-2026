@@ -2,22 +2,24 @@ async function load() {
   const res = await fetch('data.json', { cache: 'no-store' });
   const data = await res.json();
 
-  // Brand + footer
-  const brand = document.getElementById('brand-text');
-  if (brand && data.site?.brand) brand.textContent = data.site.brand;
+  // Footer
   const footer = document.getElementById('footer-text');
   if (footer && data.site?.footer) footer.textContent = data.site.footer;
 
   // HERO
   const hTitle = document.querySelector('.hero h1');
   const hSub = document.querySelector('.hero-sub');
-  const heroImg = document.getElementById('hero-image');
   const ctaPrimary = document.getElementById('cta-primary');
   const ctaSecondary = document.getElementById('cta-secondary');
 
   if (hTitle) hTitle.textContent = data.hero.title || '';
   if (hSub) hSub.textContent = data.hero.subhead || '';
-  if (heroImg && data.hero.hero_image) heroImg.src = data.hero.hero_image;
+  
+  // Set hero background image via CSS custom property
+  if (data.hero.hero_image) {
+    document.documentElement.style.setProperty('--hero-bg-image', `url('${data.hero.hero_image}')`);
+  }
+  
   if (ctaPrimary && data.hero.cta_primary) {
     ctaPrimary.textContent = data.hero.cta_primary.label || '';
     ctaPrimary.href = data.hero.cta_primary.href || '#';
@@ -27,98 +29,174 @@ async function load() {
     ctaSecondary.href = data.hero.cta_secondary.href || '#';
   }
 
-  // PEOPLE titles + intro
+  // PEOPLE
   const peopleTitle = document.getElementById('people-title');
   const peopleIntro = document.getElementById('people-intro');
+  const crewSpotlight = document.getElementById('crew-spotlight');
+
   if (peopleTitle) peopleTitle.textContent = data.people.title || '';
   if (peopleIntro) peopleIntro.textContent = data.people.intro || '';
-
-  // PEOPLE cards
-  const card = (p) => {
-    const el = document.createElement('article');
-    el.className = 'person';
-    el.innerHTML = `
-      <img class="avatar" src="${p.avatar}" alt="${p.name} portrait">
-      <div class="meta">
-        <div class="name">${p.name}</div>
-        <div class="muted">${[p.blurb, p.level ? `${p.level}` : null, (p.zeros !== undefined ? `${p.zeros} strong zeros` : null)].filter(Boolean).join(' • ')}</div>
-        ${p.level ? `<span class="pill">Level: ${p.level}</span>` : ''}
-      </div>`;
-    return el;
-  };
-
-  const spot = document.getElementById('crew-spotlight');
-  const more = document.getElementById('crew-more');
-  if (spot && Array.isArray(data.people.spotlight)) {
-    spot.innerHTML = '';
-    data.people.spotlight.forEach(p => spot.appendChild(card(p)));
+  
+  // People Section
+  if (crewSpotlight && data.people.spotlight) {
+    crewSpotlight.innerHTML = data.people.spotlight.map(person => {
+      const levelClass = person.level === 'Beginner-Intermediate' ? 'beginner-intermediate' : 
+                        person.level === 'Beginner' ? 'beginner' : '';
+      return `
+        <div class="person">
+          <img src="${person.avatar}" alt="${person.name}" class="avatar">
+          <div class="meta">
+            <div class="name">${person.name}</div>
+            <div class="muted">${person.blurb}</div>
+            <div class="pill ${levelClass}">${person.level}</div>
+            ${person.zeros !== undefined ? `<div class="muted small">${person.zeros} strong zeros</div>` : ''}
+          </div>
+        </div>
+      `;
+    }).join('');
   }
-  if (more && Array.isArray(data.people.more)) {
-    more.innerHTML = '';
-    data.people.more.forEach(p => more.appendChild(card(p)));
-  }
-
-  // Toggle label text from JSON
-  const toggleBtn = document.getElementById('toggleCrew');
-  if (toggleBtn) toggleBtn.textContent = data.people.toggle_more_closed || 'Show all';
 
   // CALENDAR
   const calTitle = document.getElementById('cal-title');
+  const calendarCards = document.querySelector('.calendar-cards');
+
   if (calTitle) calTitle.textContent = data.calendar.title || '';
-  const acc = document.querySelector('#calendar .accordion');
-  if (acc && Array.isArray(data.calendar.days)) {
-    acc.innerHTML = '';
-    data.calendar.days.forEach(day => {
-      const d = document.createElement('details');
-      d.innerHTML = `<summary>${day.title}</summary><div class="day-body">${day.body}</div>`;
-      acc.appendChild(d);
+  
+  // Calendar Section
+  if (calendarCards && data.calendar.phases) {
+    console.log('Calendar phases data:', data.calendar.phases);
+    calendarCards.innerHTML = data.calendar.phases.map((phase, index) => {
+      const isVideo = phase.mediaType === 'video';
+      console.log(`Phase ${index + 1}:`, { isVideo, photo: phase.photo, mediaType: phase.mediaType });
+      
+      const mediaElement = isVideo 
+        ? `<div class="calendar-card-media">
+             <video class="calendar-card-video" muted loop playsinline controls 
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block'; console.error('Video failed to load:', this.src)"
+                    onloadstart="console.log('Video loading started:', this.src)"
+                    onloadeddata="console.log('Video loaded successfully:', this.src)"
+                    oncanplay="this.muted=true; this.volume=0; console.log('Video ready to play - audio disabled')">
+               <source src="${phase.photo}" type="video/quicktime">
+               <source src="${phase.photo}" type="video/mp4">
+               <source src="${phase.photo}" type="video/x-msvideo">
+               Your browser does not support the video tag.
+             </video>
+             <div class="calendar-card-image" style="background-image: url('${phase.photoFallback || `https://picsum.photos/400/300?random=${index + 1}`}'); display: none;"></div>
+             <button class="calendar-fallback-btn" onclick="toggleMedia(this)" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(0,0,0,0.7); color: white; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; cursor: pointer;">🎬</button>
+           </div>`
+        : `<div class="calendar-card-image" style="background-image: url('${phase.photo}')"></div>`;
+      
+      return `
+        <div class="calendar-card" data-phase="${index}" data-media-type="${phase.mediaType}">
+          ${mediaElement}
+          <div class="calendar-card-content">
+            <div class="calendar-card-header">
+              <div class="calendar-card-meta">
+                <div class="calendar-phase-location">${phase.phase} • ${phase.location}</div>
+                <div class="calendar-date">${phase.date}</div>
+              </div>
+              <button class="calendar-card-toggle" aria-label="Toggle phase details">+</button>
+            </div>
+            <div class="calendar-card-title">
+              <div class="calendar-title-main">${phase.title}</div>
+              <div class="calendar-title-japanese">${phase.japanese}</div>
+            </div>
+            <div class="calendar-card-body">
+              ${phase.body}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Add click handlers for calendar cards
+    const calendarCardToggles = document.querySelectorAll('.calendar-card-toggle');
+    calendarCardToggles.forEach(toggle => {
+      toggle.addEventListener('click', function() {
+        const card = this.closest('.calendar-card');
+        const body = card.querySelector('.calendar-card-body');
+        const video = card.querySelector('.calendar-card-video');
+        const isExpanded = body.style.display === 'block';
+        
+        if (isExpanded) {
+          // Collapsing - hide body and change button
+          body.style.display = 'none';
+          this.textContent = '+';
+          // Pause video if it exists
+          if (video) {
+            video.pause();
+          }
+        } else {
+          // Expanding - show body and change button
+          body.style.display = 'block';
+          this.textContent = '−';
+          // Start playing video if it exists
+          if (video) {
+            // Ensure video is completely muted before playing
+            ensureVideoMuted(video);
+            video.play().catch(e => console.log('Video autoplay failed:', e));
+          }
+        }
+      });
     });
   }
 
   // GEAR
   const gearTitle = document.getElementById('gear-title');
+  const gearIntro = document.getElementById('gear-intro');
+  const gearList = document.getElementById('gear-list');
+  
   if (gearTitle) gearTitle.textContent = data.gear.title || '';
-  const list = document.querySelector('#gear .list');
-  if (list && Array.isArray(data.gear.items)) {
-    list.innerHTML = '';
-    data.gear.items.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      list.appendChild(li);
-    });
+  if (gearIntro) gearIntro.textContent = data.gear.intro || '';
+  
+  // Gear Section
+  if (gearList && data.gear.items) {
+    gearList.innerHTML = data.gear.items.map(item => `<li>${item}</li>`).join('');
   }
 }
 
-// Toggle extra riders
-function initToggle() {
-  const btn = document.getElementById('toggleCrew');
-  const more = document.getElementById('crew-more');
-  if (!btn || !more) return;
-  btn.addEventListener('click', () => {
-    const open = !more.hasAttribute('hidden');
-    if (open) {
-      more.setAttribute('hidden','');
-      btn.setAttribute('aria-expanded','false');
-      btn.textContent = btn.dataset.closed || 'And more legends — show all';
-    } else {
-      more.removeAttribute('hidden');
-      btn.setAttribute('aria-expanded','true');
-      btn.textContent = btn.dataset.open || 'Show less';
+// Global function for toggling between video and image
+function toggleMedia(button) {
+  const mediaContainer = button.parentElement;
+  const video = mediaContainer.querySelector('.calendar-card-video');
+  const image = mediaContainer.querySelector('.calendar-card-image');
+  
+  if (video.style.display === 'none') {
+    // Switch back to video
+    video.style.display = 'block';
+    image.style.display = 'none';
+    button.textContent = '🎬';
+    button.title = 'Switch to image';
+    // Ensure video is completely muted
+    ensureVideoMuted(video);
+  } else {
+    // Switch to image
+    video.style.display = 'none';
+    image.style.display = 'block';
+    button.textContent = '🖼️';
+    button.title = 'Switch to video';
+  }
+}
+
+// Function to ensure video is completely muted
+function ensureVideoMuted(video) {
+  if (video) {
+    video.muted = true;
+    video.volume = 0;
+    video.defaultMuted = true;
+    // Remove any audio tracks if possible
+    try {
+      if (video.audioTracks && video.audioTracks.length > 0) {
+        for (let i = 0; i < video.audioTracks.length; i++) {
+          video.audioTracks[i].enabled = false;
+        }
+      }
+    } catch (e) {
+      console.log('Audio track manipulation not supported');
     }
-  });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
   await load();
-  // Store toggle labels for quick swap
-  const btn = document.getElementById('toggleCrew');
-  fetch('data.json', { cache: 'no-store' })
-    .then(r => r.json())
-    .then(d => {
-      if (btn && d.people) {
-        btn.dataset.closed = d.people.toggle_more_closed || 'Show all';
-        btn.dataset.open = d.people.toggle_more_open || 'Show less';
-      }
-    })
-    .finally(initToggle);
 });
