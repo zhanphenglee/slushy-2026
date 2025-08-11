@@ -10,11 +10,11 @@
 
   "people": {
     "spotlight": [
-      { "name": "Zhan", "blurb": "Member 0.", "level": "Beginner - Intermediate", "zeros": 3, "avatar": "images/pax-zhan.jpg" },
-      { "name": "Zee", "blurb": "Trip Mommy.", "level": "Beginner", "zeros": 3, "avatar": "images/pax-zee.jpg" },
-      { "name": "Brandon", "blurb": "TokyoDrift.", "level": "Beginner - Intermediate",   "zeros": 1, "avatar": "images/pax-bc.jpg" },
-      { "name": "Jing Hong",  "blurb": "Muscel.",  "level": "Beginner - Intermediate", "zeros": 2, "avatar": "images/pax-jh.jpg" },
-      { "name": "Viv", "blurb": "Prodigy.", "level": "Beginner - Intermediate", "zeros": 20, "avatar": "images/pax-viv.jpg" }
+      { "name": "Zhan", "blurb": "Member 0.", "level": "Beginner - Intermediate", "zeros": 3, "avatar": "images/pax-zhan.png" },
+      { "name": "Zee", "blurb": "Trip Mommy.", "level": "Beginner", "zeros": 3, "avatar": "images/pax-zee.png" },
+      { "name": "Brandon", "blurb": "TokyoDrift.", "level": "Beginner - Intermediate",   "zeros": 1, "avatar": "images/pax-bc.png" },
+      { "name": "Jing Hong",  "blurb": "Muscel.",  "level": "Beginner - Intermediate", "zeros": 2, "avatar": "images/pax-jh.png" },
+      { "name": "Viv", "blurb": "Prodigy.", "level": "Beginner - Intermediate", "zeros": 20, "avatar": "images/pax-viv.png" }
     ],
     "more": [
       { "name": "Aki", "blurb": "Quiet assassin.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-5.jpg" },
