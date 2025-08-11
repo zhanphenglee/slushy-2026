@@ -71,18 +71,13 @@ async function load() {
       
       const mediaElement = isVideo 
         ? `<div class="calendar-card-media">
-             <video class="calendar-card-video" muted loop playsinline controls 
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block'; console.error('Video failed to load:', this.src)"
-                    onloadstart="console.log('Video loading started:', this.src)"
-                    onloadeddata="console.log('Video loaded successfully:', this.src)"
-                    oncanplay="this.muted=true; this.volume=0; console.log('Video ready to play - audio disabled')">
+             <video class="calendar-card-video" muted loop playsinline controls onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onloadstart="console.log('Video loading started')" onloadeddata="console.log('Video data loaded')" oncanplay="this.muted=true; this.volume=0; console.log('Video ready to play - audio disabled')">
                <source src="${phase.photo}" type="video/quicktime">
                <source src="${phase.photo}" type="video/mp4">
                <source src="${phase.photo}" type="video/x-msvideo">
                Your browser does not support the video tag.
              </video>
              <div class="calendar-card-image" style="background-image: url('${phase.photoFallback || `https://picsum.photos/400/300?random=${index + 1}`}'); display: none;"></div>
-             <button class="calendar-fallback-btn" onclick="toggleMedia(this)" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(0,0,0,0.7); color: white; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; cursor: pointer;">🎬</button>
            </div>`
         : `<div class="calendar-card-image" style="background-image: url('${phase.photo}')"></div>`;
       
@@ -152,29 +147,6 @@ async function load() {
   // Gear Section
   if (gearList && data.gear.items) {
     gearList.innerHTML = data.gear.items.map(item => `<li>${item}</li>`).join('');
-  }
-}
-
-// Global function for toggling between video and image
-function toggleMedia(button) {
-  const mediaContainer = button.parentElement;
-  const video = mediaContainer.querySelector('.calendar-card-video');
-  const image = mediaContainer.querySelector('.calendar-card-image');
-  
-  if (video.style.display === 'none') {
-    // Switch back to video
-    video.style.display = 'block';
-    image.style.display = 'none';
-    button.textContent = '🎬';
-    button.title = 'Switch to image';
-    // Ensure video is completely muted
-    ensureVideoMuted(video);
-  } else {
-    // Switch to image
-    video.style.display = 'none';
-    image.style.display = 'block';
-    button.textContent = '🖼️';
-    button.title = 'Switch to video';
   }
 }
 
