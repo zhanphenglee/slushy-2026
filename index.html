@@ -3,133 +3,278 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>POWDER DAYS AHEAD — JAPAN 2026</title>
-  <meta name="description" content="Bluebird laps with friends. Myoko Kogen, Japan — 2026." />
+  <title>Slushy 2026 Trip — Epic powder. Big crew. High stoke.</title>
+  <meta name="description" content="Myoko / Nagano, Japan — Sunny laps, big crew energy, ramen breaks. Jan 2026." />
   <meta name="theme-color" content="#ffffff" />
-
   <style>
     :root{
-      --bg:#ffffff; --surface:#f9f9f9; --muted:#555555; --text:#111111;
-      --border:#e0e0e0; --accent:#000000;
-      --radius:16px;
-      --fs-900:clamp(2rem,5vw,3.5rem);
-      --fs-700:clamp(1rem,2.2vw,1.25rem);
-      --fs-600:1.125rem;
-      --fs-500:1rem;
-      --fs-400:.9rem;
+      --bg:#ffffff; --surface:#f9f9f9; --text:#111; --muted:#616161; --border:#e6e6e6;
+      --radius:16px; --shadow:0 4px 16px rgba(0,0,0,.06);
+      --fs-900:clamp(2rem,5vw,3rem); --fs-800:clamp(1.25rem,3vw,1.5rem);
+      --fs-700:1.125rem; --fs-600:1rem; --fs-500:.95rem; --fs-400:.9rem;
       --space-2:8px; --space-4:16px; --space-6:24px; --space-8:32px; --space-12:48px;
-      --shadow:0 4px 16px rgba(0,0,0,.06);
     }
-
     *,*::before,*::after{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, Arial}
+    body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 ui-sans-serif,system-ui,-apple-system,Inter,Roboto,Arial}
     img{display:block;max-width:100%;height:auto}
     a{color:inherit;text-decoration:none}
-    :focus-visible{outline:2px dashed #000;outline-offset:3px}
-
+    :focus-visible{outline:2px dashed #111;outline-offset:3px}
     .container{width:min(1120px,92vw);margin-inline:auto}
     .surface{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .stack>*{margin-block:var(--space-4)}
+    .section{padding-block:var(--space-12);border-top:1px solid var(--border)}
+    h1,h2{margin:0}
+    h2{font-size:var(--fs-800)}
+    .muted{color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:.6rem .9rem;border-radius:999px;background:#fff}
+    .btn:hover{border-color:#111}
+    .btn-primary{background:#111;color:#fff}
 
-    /* Top bar */
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.08em}
-    .brand-dot{width:8px;height:8px;border-radius:50%;background:var(--text);opacity:.9}
-    .nav-actions{display:flex;gap:10px}
-    .btn{border:1px solid var(--border);padding:.6rem .9rem;border-radius:999px;background:transparent;color:var(--text)}
-    .btn:hover{border-color:var(--text)}
-    .btn-primary{background:var(--text);color:var(--bg);font-weight:600}
+    /* Topbar */
+    .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.06em}
+    .brand-dot{width:8px;height:8px;border-radius:50%;background:#111}
 
     /* Hero */
-    header{padding-block:var(--space-6)}
-    .hero{display:grid;gap:var(--space-6)}
-    .hero h1{font-size:var(--fs-900);letter-spacing:.04em;text-align:center;margin:0}
-    .sub{font-size:var(--fs-700);text-align:center;color:var(--muted);margin-top:6px}
-    .cta-row{display:flex;justify-content:center;gap:10px;margin-top:var(--space-4)}
-    .hero-media{margin-top:var(--space-6)}
+    header{padding-block:var(--space-8)}
+    .hero{display:grid;gap:var(--space-4);text-align:center}
+    .hero h1{font-size:var(--fs-900);letter-spacing:.02em}
+    .cta-row{display:flex;justify-content:center;gap:10px;margin-top:6px}
+    .hero-media{margin-top:var(--space-8)}
     .hero-media .frame{overflow:hidden;border-radius:18px;border:1px solid var(--border)}
     .hero-media img{width:100%;aspect-ratio:16/9;object-fit:cover}
 
-    /* Stats */
-    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-top:var(--space-8)}
-    .stat{display:grid;gap:6px;justify-items:center}
-    .stat .num{font-size:clamp(2rem,6vw,3rem);font-weight:700}
-    .stat .label{color:var(--muted)}
-
-    /* Cards */
-    .cards{display:grid;grid-template-columns:1fr;gap:var(--space-6);margin-top:var(--space-8)}
-    .card{padding:14px}
-    .card .thumb{aspect-ratio:1/1;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:grid;place-items:center;color:#999}
-    .card h3{margin:.8rem 0 0 0;font-size:1rem}
-
-    /* Footer */
-    footer{padding-block:var(--space-12);color:var(--muted);font-size:var(--fs-400)}
-    .footer-grid{display:grid;gap:10px;justify-items:start}
-    .footer-grid small{opacity:.9}
+    /* People */
+    .grid-people{display:grid;grid-template-columns:1fr;gap:var(--space-6);margin-top:var(--space-8)}
+    .person{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:12px;border:1px solid var(--border);border-radius:12px;background:#fff}
+    .avatar{width:72px;height:72px;border-radius:12px;background:var(--surface);border:1px solid var(--border);object-fit:cover}
+    .meta{display:grid;gap:4px}
+    .name{font-weight:700}
+    .pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:.16rem .5rem;font-size:.82rem;color:#444}
+    .people-actions{display:flex;justify-content:center;margin-top:var(--space-6)}
 
     @media (min-width:720px){
-      .cards{grid-template-columns:repeat(3,1fr)}
+      .grid-people{grid-template-columns:repeat(3,1fr)}
+      .grid-people.spotlight-4{grid-template-columns:repeat(4,1fr)}
+      .person{grid-template-columns:1fr; text-align:center}
+      .meta{justify-items:center}
     }
+
+    /* Calendar */
+    .accordion{display:grid;gap:12px;margin-top:var(--space-6)}
+    details{border:1px solid var(--border);border-radius:12px;background:#fff;padding:10px}
+    summary{cursor:pointer;list-style:none;font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    .day-body{padding:10px 4px 4px;color:#333}
+
+    /* Gear list */
+    .list{display:grid;gap:10px;margin-top:var(--space-6)}
+    .list li{background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}
+    .kicker{font-weight:700}
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="topbar">
-      <div class="brand">
-        <span class="brand-dot"></span><span>BOA</span>
-      </div>
-      <div class="nav-actions">
-        <a class="btn" href="#">Gear List</a>
-        <a class="btn btn-primary" href="#">Calendar</a>
+
+    <!-- Topbar -->
+    <div class="topbar" aria-label="Top">
+      <div class="brand"><span class="brand-dot"></span><span>BOA</span></div>
+      <div class="nav-actions" role="group" aria-label="Top actions">
+        <a class="btn" href="#people">The Crew</a>
+        <a class="btn btn-primary" href="#calendar">Trip Details</a>
       </div>
     </div>
 
+    <!-- Hero -->
     <header class="hero">
-      <h1>POWDER DAYS AHEAD</h1>
-      <p class="sub">JAPAN 2026 — 降雪の祭典</p>
+      <h1>Slushy 2026 Trip.</h1>
+      <p class="muted">Epic powder. Big crew. High stoke.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#gallery">Book Now</a>
+        <a class="btn btn-primary" href="#people">Show Crew</a>
+        <a class="btn" href="#calendar">Trip Details</a>
       </div>
 
       <div class="hero-media">
         <div class="frame surface">
-          <img src="images/hero.webp.png" alt="Sunny Myoko Kogen snowboard jump" />
+          <!-- Use hero.png/.jpg/.webp as you have it -->
+          <img src="images/hero.png" alt="Sunny snowboard jump in Japan" />
         </div>
       </div>
-
-      <div class="stats">
-        <div class="stat">
-          <div class="num">5</div>
-          <div class="label">Days Shredding</div>
-        </div>
-        <div class="stat">
-          <div class="num">3</div>
-          <div class="label">Mountains</div>
-        </div>
-      </div>
-
-      <section class="cards" id="gallery">
-        <article class="card surface">
-          <div class="thumb">■</div>
-          <h3>Bluebird Laps</h3>
-        </article>
-        <article class="card surface">
-          <div class="thumb">●</div>
-          <h3>Night Food Runs</h3>
-        </article>
-        <article class="card surface">
-          <div class="thumb">▲</div>
-          <h3>Road Trips</h3>
-        </article>
-      </section>
     </header>
 
-    <footer>
-      <div class="footer-grid">
-        <small><strong>Location</strong><br>Myoko Kogen, Japan</small>
-        <small><strong>Info</strong><br>Trip FAQ • 2026 Countdown</small>
+    <!-- People -->
+    <section id="people" class="section" aria-labelledby="people-title">
+      <h2 id="people-title">People</h2>
+      <p class="muted">Spotlight on 4 riders. Expand to see the full crew of up to 10.</p>
+
+      <!-- Spotlight 4 (default) -->
+      <div class="grid-people spotlight-4" id="crew-spotlight">
+        <!-- Person card (duplicate & edit) -->
+        <article class="person">
+          <img class="avatar" src="images/pax-zhan.jpg" alt="Zhan portrait" />
+          <div class="meta">
+            <div class="name">Zhan</div>
+            <div class="muted">Rider. Carve. 3 strong zeros.</div>
+            <span class="pill">Level: Intermediate</span>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="avatar" src="images/pax-leah.jpg" alt="Leah portrait" />
+          <div class="meta">
+            <div class="name">Leah</div>
+            <div class="muted">Swooper. Newbie. 2 strong zeros.</div>
+            <span class="pill">Level: Beginner</span>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="avatar" src="images/pax-kai.jpg" alt="Kai portrait" />
+          <div class="meta">
+            <div class="name">Kai</div>
+            <div class="muted">Joker. Intermediate. 4 strong zeros.</div>
+            <span class="pill">Level: Intermediate</span>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="avatar" src="images/pax-ivan.jpg" alt="Ivan portrait" />
+          <div class="meta">
+            <div class="name">Ivan</div>
+            <div class="muted">Mr. Lines. Advanced. 5 strong zeros.</div>
+            <span class="pill">Level: Advanced</span>
+          </div>
+        </article>
       </div>
+
+      <!-- Hidden rest of crew (up to 6 more) -->
+      <div class="grid-people" id="crew-more" hidden>
+        <article class="person">
+          <img class="avatar" src="images/pax-5.jpg" alt="Rider 5 portrait" />
+          <div class="meta">
+            <div class="name">Aki</div>
+            <div class="muted">Quiet assassin. 3 strong zeros.</div>
+            <span class="pill">Level: Intermediate</span>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="avatar" src="images/pax-6.jpg" alt="Rider 6 portrait" />
+          <div class="meta">
+            <div class="name">Miu</div>
+            <div class="muted">Late‑night DJ. 2 strong zeros.</div>
+            <span class="pill">Level: Beginner</span>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="avatar" src="images/pax-7.jpg" alt="Rider 7 portrait" />
+          <div class="meta">
+            <div class="name">Ken</div>
+            <div class="muted">Park rat. 4 strong zeros.</div>
+            <span class="pill">Level: Intermediate</span>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="avatar" src="images/pax-8.jpg" alt="Rider 8 portrait" />
+          <div class="meta">
+            <div class="name">Rei</div>
+            <div class="muted">Glades enjoyer. 3 strong zeros.</div>
+            <span class="pill">Level: Intermediate</span>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="avatar" src="images/pax-9.jpg" alt="Rider 9 portrait" />
+          <div class="meta">
+            <div class="name">Bo</div>
+            <div class="muted">Trip mom. 1 strong zero.</div>
+            <span class="pill">Level: Beginner</span>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="avatar" src="images/pax-10.jpg" alt="Rider 10 portrait" />
+          <div class="meta">
+            <div class="name">Yuki</div>
+            <div class="muted">Lines & snacks. 2 strong zeros.</div>
+            <span class="pill">Level: Intermediate</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="people-actions">
+        <button class="btn" id="toggleCrew" type="button" aria-expanded="false" aria-controls="crew-more">And more legends — show all</button>
+      </div>
+    </section>
+
+    <!-- Calendar -->
+    <section id="calendar" class="section" aria-labelledby="cal-title">
+      <h2 id="cal-title">Trip Calendar</h2>
+      <div class="accordion">
+        <details>
+          <summary>Day 1 — Tokyo link‑up & transfer</summary>
+          <div class="day-body">
+            Shinkansen up; grocery run; welcome dinner; quick plan; vibes set to high.
+          </div>
+        </details>
+        <details>
+          <summary>Day 2 — Myoko: corduroy morning, soft laps</summary>
+          <div class="day-body">
+            Easy groomers, side hits, village stroll, onsen.
+          </div>
+        </details>
+        <details>
+          <summary>Day 3 — Powder hunt (if storm)</summary>
+          <div class="day-body">
+            Trees and gullies; safety brief; ramen break; film dump at night.
+          </div>
+        </details>
+        <details>
+          <summary>Day 4 — Road trip option (Nozawa / Madarao)</summary>
+          <div class="day-body">
+            Carve & view day. Dinner in town, early night.
+          </div>
+        </details>
+        <details>
+          <summary>Day 5 — Freeride + photos + wrap party</summary>
+          <div class="day-body">
+            Best‑of laps, group photos, pack up, head out.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Gear List -->
+    <section id="gear" class="section" aria-labelledby="gear-title">
+      <h2 id="gear-title">Gear List & Advice</h2>
+      <ul class="list" role="list">
+        <li><span class="kicker">Board & Bindings:</span> all‑mountain or freeride; check stance screws; wax for cold temps.</li>
+        <li><span class="kicker">Clothing:</span> waterproof jacket/pants, midlayer fleece, thermal base layers, warm socks.</li>
+        <li><span class="kicker">Essentials:</span> helmet, goggles (low‑light + sunny lens), gloves, neck tube, sunscreen, heat packs.</li>
+        <li><span class="kicker">Nice‑to‑have:</span> action cam, spare batteries, collapsible water bottle, small first‑aid kit.</li>
+      </ul>
+    </section>
+
+    <footer class="section" style="padding-block:32px;">
+      <p class="muted">Myoko / Nagano, Japan — Jan 2026 • Built fast, left imperfect on purpose.</p>
     </footer>
+
   </div>
+
+  <script>
+    // Toggle "show all riders"
+    (function(){
+      const btn = document.getElementById('toggleCrew');
+      const more = document.getElementById('crew-more');
+      btn.addEventListener('click', () => {
+        const open = more.hasAttribute('hidden') ? false : true;
+        if(open){ more.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); btn.textContent='And more legends — show all'; }
+        else { more.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); btn.textContent='Show less'; }
+      });
+    })();
+  </script>
 </body>
 </html>
