@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Slushy 2026 Trip</title>
+  <meta name="description" content="Myoko / Nagano, Japan — Jan 2026." />
+  <meta name="theme-color" content="#ffffff" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Topbar (brand can be filled from JSON if desired) -->
+    <div class="topbar" aria-label="Top">
+      <div class="brand"><span class="brand-dot"></span><span id="brand-text"></span></div>
+      <div class="nav-actions" role="group" aria-label="Top actions">
+        <a class="btn" href="#people">The Crew</a>
+        <a class="btn btn-primary" href="#calendar">Trip Details</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero" id="hero">
+      <h1></h1>
+      <p class="hero-sub"></p>
+      <div class="cta-row">
+        <a class="btn btn-primary" id="cta-primary" href="#"></a>
+        <a class="btn" id="cta-secondary" href="#"></a>
+      </div>
+
+      <div class="hero-media">
+        <div class="frame surface">
+          <img id="hero-image" src="" alt="Trip hero image" />
+        </div>
+      </div>
+    </header>
+
+    <!-- PEOPLE -->
+    <section id="people" class="section" aria-labelledby="people-title">
+      <h2 id="people-title"></h2>
+      <p id="people-intro" class="muted"></p>
+
+      <div id="crew-spotlight" class="grid-people spotlight-4"></div>
+
+      <div class="people-actions">
+        <button class="btn" id="toggleCrew" type="button" aria-expanded="false" aria-controls="crew-more"></button>
+      </div>
+
+      <div id="crew-more" class="grid-people" hidden></div>
+    </section>
+
+    <!-- CALENDAR -->
+    <section id="calendar" class="section" aria-labelledby="cal-title">
+      <h2 id="cal-title"></h2>
+      <div class="accordion"></div>
+    </section>
+
+    <!-- GEAR LIST -->
+    <section id="gear" class="section" aria-labelledby="gear-title">
+      <h2 id="gear-title"></h2>
+      <ul class="list" role="list"></ul>
+    </section>
+
+    <footer class="section" style="padding-block:32px;">
+      <p class="muted" id="footer-text"></p>
+    </footer>
+
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
