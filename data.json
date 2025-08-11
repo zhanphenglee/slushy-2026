@@ -1,43 +1,56 @@
 {
+  "site": {
+    "brand": "BOA",
+    "footer": "Myoko / Nagano, Japan — Jan 2026 • Built fast, left imperfect on purpose."
+  },
+
   "hero": {
-    "title": "Slushy 2026",
+    "title": "Slushy 2026 Trip.",
     "subhead": "Epic powder. Big crew. High stoke.",
+    "hero_image": "images/hero.png",
     "cta_primary": { "label": "Join the Hype", "href": "#people" },
-    "cta_secondary": { "label": "Trip Details", "href": "#calendar" },
-    "hero_image": "images/hero.webp.png",
-    "meta": { "location": "Myoko / Nagano, Japan", "month": "Jan 2026" }
+    "cta_secondary": { "label": "Trip Details", "href": "#calendar" }
   },
 
   "people": {
+    "title": "People",
+    "intro": "Spotlight on 4 riders. Expand to see the full crew.",
     "spotlight": [
-      { "name": "Zhan", "blurb": "Member 0.", "level": "Beginner - Intermediate", "zeros": 3, "avatar": "images/pax-zhan.png" },
-      { "name": "Zee", "blurb": "Trip Mommy.", "level": "Beginner", "zeros": 3, "avatar": "images/pax-zee.png" },
-      { "name": "Brandon", "blurb": "TokyoDrift.", "level": "Beginner - Intermediate",   "zeros": 1, "avatar": "images/pax-bc.png" },
-      { "name": "Jing Hong",  "blurb": "Muscel.",  "level": "Beginner - Intermediate", "zeros": 2, "avatar": "images/pax-jh.png" },
-      { "name": "Viv", "blurb": "Prodigy.", "level": "Beginner - Intermediate", "zeros": 20, "avatar": "images/pax-viv.png" }
+      { "name": "Zhan", "blurb": "Rider. Carve.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-zhan.jpg" },
+      { "name": "Leah", "blurb": "Swooper.", "level": "Beginner",   "zeros": 2, "avatar": "images/pax-leah.jpg" },
+      { "name": "Kai",  "blurb": "Joker.",  "level": "Intermediate", "zeros": 4, "avatar": "images/pax-kai.jpg" },
+      { "name": "Ivan", "blurb": "Mr. Lines.", "level": "Advanced", "zeros": 5, "avatar": "images/pax-ivan.jpg" }
     ],
     "more": [
-      { "name": "Aki", "blurb": "Quiet assassin.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-5.jpg" },
-      { "name": "Miu", "blurb": "Late‑night DJ.", "level": "Beginner",     "zeros": 2, "avatar": "images/pax-6.jpg" },
-      { "name": "Ken", "blurb": "Park rat.",       "level": "Intermediate", "zeros": 4, "avatar": "images/pax-7.jpg" },
-      { "name": "Rei", "blurb": "Glades enjoyer.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-8.jpg" },
-      { "name": "Bo",  "blurb": "Trip mom.",       "level": "Beginner",     "zeros": 1, "avatar": "images/pax-9.jpg" },
-      { "name": "Yuki","blurb": "Lines & snacks.", "level": "Intermediate", "zeros": 2, "avatar": "images/pax-10.jpg" }
+      { "name": "Aki",  "blurb": "Quiet assassin.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-5.jpg" },
+      { "name": "Miu",  "blurb": "Late‑night DJ.", "level": "Beginner",     "zeros": 2, "avatar": "images/pax-6.jpg" },
+      { "name": "Ken",  "blurb": "Park rat.",       "level": "Intermediate", "zeros": 4, "avatar": "images/pax-7.jpg" },
+      { "name": "Rei",  "blurb": "Glades enjoyer.", "level": "Intermediate", "zeros": 3, "avatar": "images/pax-8.jpg" },
+      { "name": "Bo",   "blurb": "Trip mom.",       "level": "Beginner",     "zeros": 1, "avatar": "images/pax-9.jpg" },
+      { "name": "Yuki", "blurb": "Lines & snacks.", "level": "Intermediate", "zeros": 2, "avatar": "images/pax-10.jpg" }
+    ],
+    "toggle_more_closed": "And more legends — show all",
+    "toggle_more_open": "Show less"
+  },
+
+  "calendar": {
+    "title": "Trip Calendar",
+    "days": [
+      { "title": "Day 1 — Tokyo link‑up & transfer", "body": "Shinkansen up; grocery run; welcome dinner; quick plan; vibes set to high." },
+      { "title": "Day 2 — Myoko: corduroy morning, soft laps", "body": "Easy groomers, side hits, village stroll, onsen." },
+      { "title": "Day 3 — Powder hunt (if storm)", "body": "Trees and gullies; safety brief; ramen break; film dump at night." },
+      { "title": "Day 4 — Road trip option (Nozawa / Madarao)", "body": "Carve & view day. Dinner in town, early night." },
+      { "title": "Day 5 — Freeride + photos + wrap party", "body": "Best‑of laps, group photos, pack up, head out." }
     ]
   },
 
-  "calendar": [
-    { "title": "Day 1 — Tokyo link‑up & transfer", "body": "Shinkansen up; grocery run; welcome dinner; quick plan; vibes set to high." },
-    { "title": "Day 2 — Myoko: corduroy morning, soft laps", "body": "Easy groomers, side hits, village stroll, onsen." },
-    { "title": "Day 3 — Powder hunt (if storm)", "body": "Trees and gullies; safety brief; ramen break; film dump at night." },
-    { "title": "Day 4 — Road trip option (Nozawa / Madarao)", "body": "Carve & view day. Dinner in town, early night." },
-    { "title": "Day 5 — Freeride + photos + wrap party", "body": "Best‑of laps, group photos, pack up, head out." }
-  ],
-
-  "gear": [
-    "Board & bindings: all‑mountain/freeride; check screws; cold‑temp wax.",
-    "Clothing: waterproof jacket/pants, mid‑layer fleece, thermal base.",
-    "Essentials: helmet, goggles (low‑light + sunny lens), gloves, sunscreen.",
-    "Nice‑to‑have: action cam, spare batteries, collapsible bottle, first‑aid."
-  ]
+  "gear": {
+    "title": "Gear List & Advice",
+    "items": [
+      "Board & bindings: all‑mountain/freeride; check screws; cold‑temp wax.",
+      "Clothing: waterproof jacket/pants, mid‑layer fleece, thermal base.",
+      "Essentials: helmet, goggles (low‑light + sunny lens), gloves, sunscreen.",
+      "Nice‑to‑have: action cam, spare batteries, collapsible bottle, first‑aid."
+    ]
+  }
 }
