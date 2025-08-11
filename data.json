@@ -5,8 +5,8 @@
   },
 
   "hero": {
-    "title": "Slushy 2026 -- 解けかけの雪",
-    "subhead": "Epic powder. Big crew. High stoke.",
+    "title": "Slushy 2026\u00A0--\u00A0解けかけの雪",
+    "subhead": "10 days. 10 crew. Epic powder.",
     "hero_image": "images/hero.png",
     "cta_primary": { "label": "The Crew", "href": "#people" },
     "cta_secondary": { "label": "Trip Details", "href": "#calendar" }
@@ -20,9 +20,9 @@
       { "name": "Viv", "blurb": "Prodigy", "level": "Beginner-Intermediate", "zeros": 4, "avatar": "images/pax-viv.jpg" },
       { "name": "JH", "blurb": "Stronk", "level": "Beginner-Intermediate", "zeros": 8, "avatar": "images/pax-jh.jpg" },
       { "name": "BC", "blurb": "Trickster", "level": "Beginner-Intermediate", "zeros": 1, "avatar": "images/pax-bc.jpg" },
-      { "name": "Zee", "blurb": "Mommy", "level": "Beginner", "zeros": 27, "avatar": "images/pax-zee.jpg" },
-      { "name": "Chris", "blurb": "Ski master", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-chris.jpg" },
-      { "name": "Linn", "blurb": "Vibes chaser", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-linn.jpg" },
+      { "name": "Zee", "blurb": "Trip Mommy", "level": "Beginner", "zeros": 27, "avatar": "images/pax-zee.jpg" },
+      { "name": "Chris", "blurb": "Ski Master", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-chris.jpg" },
+      { "name": "Linn", "blurb": "Vibes Chaser", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-linn.jpg" },
       { "name": "Gerald", "blurb": "Visa Concierge", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-gerald.jpg" },
       { "name": "Clare", "blurb": "Fallproof", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-clare.jpg" },
       { "name": "Sherilyn", "blurb": "Reservation Artist", "level": "Beginner", "zeros": "Unknown", "avatar": "images/pax-sherilyn.jpg" }
