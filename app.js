@@ -47,7 +47,7 @@ async function load() {
           <img src="${person.avatar}" alt="${person.name}" class="avatar">
           <div class="meta">
             <div class="name">${person.name}</div>
-            <div class="muted">${person.blurb}</div>
+            <div class="muted">"${person.blurb}"</div>
             <div class="pill ${levelClass}">${person.level}</div>
             ${person.zeros !== undefined ? `<div class="muted small">${person.zeros} strong zeros</div>` : ''}
           </div>
@@ -69,10 +69,15 @@ async function load() {
       const isVideo = phase.mediaType === 'video';
       console.log(`Phase ${index + 1}:`, { isVideo, photo: phase.photo, mediaType: phase.mediaType });
       
-      const mediaElement = isVideo 
+      const mediaElement = phase.mediaType === 'video' 
         ? `<div class="calendar-card-media">
-             <video class="calendar-card-video" muted loop playsinline controls onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" onloadstart="console.log('Video loading started')" onloadeddata="console.log('Video data loaded')" oncanplay="this.muted=true; this.volume=0; console.log('Video ready to play - audio disabled')">
-               <source src="${phase.photo}" type="video/quicktime">
+             <video class="calendar-card-video" 
+               muted 
+               loop 
+               playsinline 
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+               onloadstart="console.log('Video loading started')"
+               onloadeddata="console.log('Video data loaded')">
                <source src="${phase.photo}" type="video/mp4">
                <source src="${phase.photo}" type="video/x-msvideo">
                Your browser does not support the video tag.
@@ -110,29 +115,44 @@ async function load() {
       toggle.addEventListener('click', function() {
         const card = this.closest('.calendar-card');
         const body = card.querySelector('.calendar-card-body');
-        const video = card.querySelector('.calendar-card-video');
         const isExpanded = body.style.display === 'block';
         
         if (isExpanded) {
           // Collapsing - hide body and change button
           body.style.display = 'none';
           this.textContent = '+';
-          // Pause video if it exists
-          if (video) {
-            video.pause();
-          }
         } else {
           // Expanding - show body and change button
           body.style.display = 'block';
           this.textContent = '−';
-          // Start playing video if it exists
-          if (video) {
-            // Ensure video is completely muted before playing
-            ensureVideoMuted(video);
-            video.play().catch(e => console.log('Video autoplay failed:', e));
-          }
         }
       });
+    });
+
+    // Add scroll-based video autoplay
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          // Video is visible, start playing
+          ensureVideoMuted(video);
+          video.play().catch(e => console.log('Video autoplay failed:', e));
+        } else {
+          // Video is not visible, pause
+          video.pause();
+        }
+      });
+    }, observerOptions);
+
+    // Observe all videos
+    const videos = document.querySelectorAll('.calendar-card-video');
+    videos.forEach(video => {
+      videoObserver.observe(video);
     });
   }
 
