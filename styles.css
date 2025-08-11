@@ -17,7 +17,7 @@
 html:focus-within{scroll-behavior:smooth}
 body{
   margin:0; background:var(--bg); color:var(--text);
-  font:400 16px/1.6 "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, Inter, Roboto, Arial;
+  font-family: 'Barlow Semi Condensed', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
 img{display:block;max-width:100%;height:auto}
@@ -39,8 +39,20 @@ a{color:inherit;text-decoration:none}
 
 /* ====== Hero ====== */
 .hero{display:grid; gap:var(--space-3); text-align:center; padding-block:var(--space-8)}
-.hero h1{
-  font-weight:800; font-size:var(--fs-hero); letter-spacing:-0.02em; margin:0 0 .2em 0;
+.hero h1 {
+  font-family: 'Barlow Semi Condensed', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  letter-spacing: -0.015em;
+  margin-bottom: 0.25em;
+}
+
+.hero p {
+  font-family: 'Barlow Semi Condensed', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: #8e8e8e;
+  margin: 0;
 }
 .hero-sub{
   font-weight:700; font-size:var(--fs-hero-sub); color:#8e8e8e; margin:0;
