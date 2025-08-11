@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Slushy 2026 Trip — Epic powder. Big crew. High stoke.</title>
-  <meta name="description" content="Myoko / Nagano, Japan — Sunny laps, big crew energy, ramen breaks. Jan 2026." />
+  <title>Slushy 2026 Trip</title>
+  <meta name="description" content="Myoko / Nagano, Japan — Jan 2026." />
   <meta name="theme-color" content="#ffffff" />
 
-  <!-- Typeface (clean, geometric) -->
+  <!-- Typeface -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Site styles -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
 
-    <!-- Topbar -->
+    <!-- Topbar (static UI; links can be changed in data.json via hero CTAs) -->
     <div class="topbar" aria-label="Top">
       <div class="brand"><span class="brand-dot"></span><span>BOA</span></div>
       <div class="nav-actions" role="group" aria-label="Top actions">
@@ -25,132 +25,50 @@
       </div>
     </div>
 
-    <!-- Hero -->
-    <header class="hero">
-      <h1>Slushy 2026 Trip.</h1>
-      <p class="hero-sub">Epic powder. Big crew. High stoke.</p>
+    <!-- HERO (all text & image populated by app.js from data.json) -->
+    <header class="hero" id="hero">
+      <h1><!-- populated --></h1>
+      <p class="hero-sub"><!-- populated --></p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#people">Join the Hype</a>
-        <a class="btn" href="#calendar">Trip Details</a>
+        <a class="btn btn-primary" href="#"><!-- primary CTA --></a>
+        <a class="btn" href="#"><!-- secondary CTA --></a>
       </div>
 
       <div class="hero-media">
         <div class="frame surface">
-          <!-- Use hero.png/.jpg/.webp based on what you uploaded -->
-          <img src="images/hero.png" alt="Sunny snowboard jump in Japan" />
+          <img src="" alt="Trip hero image" />
         </div>
       </div>
     </header>
 
-    <!-- People -->
+    <!-- PEOPLE (spotlight + expandable full crew) -->
     <section id="people" class="section" aria-labelledby="people-title">
       <h2 id="people-title">People</h2>
-      <p class="muted">Spotlight on 4 riders. Expand to see the full crew of up to 10.</p>
+      <p class="muted">Spotlight on 4 riders. Expand to see the full crew.</p>
 
-      <!-- Spotlight 4 -->
-      <div class="grid-people spotlight-4" id="crew-spotlight">
-        <article class="person">
-          <img class="avatar" src="images/pax-zhan.jpg" alt="Zhan portrait" />
-          <div class="meta">
-            <div class="name">Zhan</div>
-            <div class="muted">Rider. Carve. 3 strong zeros.</div>
-            <span class="pill">Level: Intermediate</span>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="avatar" src="images/pax-leah.jpg" alt="Leah portrait" />
-          <div class="meta">
-            <div class="name">Leah</div>
-            <div class="muted">Swooper. Newbie. 2 strong zeros.</div>
-            <span class="pill">Level: Beginner</span>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="avatar" src="images/pax-kai.jpg" alt="Kai portrait" />
-          <div class="meta">
-            <div class="name">Kai</div>
-            <div class="muted">Joker. Intermediate. 4 strong zeros.</div>
-            <span class="pill">Level: Intermediate</span>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="avatar" src="images/pax-ivan.jpg" alt="Ivan portrait" />
-          <div class="meta">
-            <div class="name">Ivan</div>
-            <div class="muted">Mr. Lines. Advanced. 5 strong zeros.</div>
-            <span class="pill">Level: Advanced</span>
-          </div>
-        </article>
-      </div>
-
-      <!-- Hidden rest of crew (optional up to 6 more) -->
-      <div class="grid-people" id="crew-more" hidden>
-        <!-- Duplicate this block for riders 5–10; keep filenames consistent -->
-        <article class="person">
-          <img class="avatar" src="images/pax-5.jpg" alt="Aki portrait" />
-          <div class="meta">
-            <div class="name">Aki</div>
-            <div class="muted">Quiet assassin. 3 strong zeros.</div>
-            <span class="pill">Level: Intermediate</span>
-          </div>
-        </article>
-        <!-- ...add pax-6.jpg to pax-10.jpg similarly -->
-      </div>
+      <!-- Filled by app.js -->
+      <div id="crew-spotlight" class="grid-people spotlight-4"></div>
 
       <div class="people-actions">
-        <button class="btn" id="toggleCrew" type="button" aria-expanded="false" aria-controls="crew-more">And more legends — show all</button>
+        <button class="btn" id="toggleCrew" type="button" aria-expanded="false" aria-controls="crew-more">
+          And more legends — show all
+        </button>
       </div>
+
+      <!-- Hidden until toggled; filled by app.js -->
+      <div id="crew-more" class="grid-people" hidden></div>
     </section>
 
-    <!-- Calendar -->
+    <!-- CALENDAR -->
     <section id="calendar" class="section" aria-labelledby="cal-title">
       <h2 id="cal-title">Trip Calendar</h2>
-      <div class="accordion">
-        <details>
-          <summary>Day 1 — Tokyo link‑up & transfer</summary>
-          <div class="day-body">
-            Shinkansen up; grocery run; welcome dinner; quick plan; vibes set to high.
-          </div>
-        </details>
-        <details>
-          <summary>Day 2 — Myoko: corduroy morning, soft laps</summary>
-          <div class="day-body">
-            Easy groomers, side hits, village stroll, onsen.
-          </div>
-        </details>
-        <details>
-          <summary>Day 3 — Powder hunt (if storm)</summary>
-          <div class="day-body">
-            Trees and gullies; safety brief; ramen break; film dump at night.
-          </div>
-        </details>
-        <details>
-          <summary>Day 4 — Road trip option (Nozawa / Madarao)</summary>
-          <div class="day-body">
-            Carve & view day. Dinner in town, early night.
-          </div>
-        </details>
-        <details>
-          <summary>Day 5 — Freeride + photos + wrap party</summary>
-          <div class="day-body">
-            Best‑of laps, group photos, pack up, head out.
-          </div>
-        </details>
-      </div>
+      <div class="accordion"><!-- days injected by app.js --></div>
     </section>
 
-    <!-- Gear List -->
+    <!-- GEAR LIST -->
     <section id="gear" class="section" aria-labelledby="gear-title">
       <h2 id="gear-title">Gear List & Advice</h2>
-      <ul class="list" role="list">
-        <li><span class="kicker">Board & Bindings:</span> all‑mountain/freeride; check screws; wax for cold temps.</li>
-        <li><span class="kicker">Clothing:</span> waterproof jacket/pants, mid‑layer fleece, thermal base layers.</li>
-        <li><span class="kicker">Essentials:</span> helmet, goggles (low‑light + sunny lens), gloves, neck tube, sunscreen.</li>
-        <li><span class="kicker">Nice‑to‑have:</span> action cam, spare batteries, collapsible bottle, small first‑aid kit.</li>
-      </ul>
+      <ul class="list" role="list"><!-- items injected by app.js --></ul>
     </section>
 
     <footer class="section" style="padding-block:32px;">
@@ -159,25 +77,7 @@
 
   </div>
 
-  <!-- Tiny JS to toggle extra riders -->
-  <script>
-    (function(){
-      const btn = document.getElementById('toggleCrew');
-      const more = document.getElementById('crew-more');
-      if(!btn || !more) return;
-      btn.addEventListener('click', () => {
-        const open = !more.hasAttribute('hidden');
-        if(open){
-          more.setAttribute('hidden','');
-          btn.setAttribute('aria-expanded','false');
-          btn.textContent = 'And more legends — show all';
-        } else {
-          more.removeAttribute('hidden');
-          btn.setAttribute('aria-expanded','true');
-          btn.textContent = 'Show less';
-        }
-      });
-    })();
-  </script>
+  <!-- App script: loads data.json and populates the page -->
+  <script src="app.js" defer></script>
 </body>
 </html>
