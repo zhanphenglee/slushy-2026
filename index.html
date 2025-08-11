@@ -3,81 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Slushy 2026</title>
+  <title>Slushy 2026 Trip</title>
   <meta name="description" content="Myoko / Nagano, Japan — Jan 2026." />
   <meta name="theme-color" content="#ffffff" />
-
-  <!-- Typeface -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Site styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
 
-    <!-- Topbar (static UI; links can be changed in data.json via hero CTAs) -->
+    <!-- Topbar (brand can be filled from JSON if desired) -->
     <div class="topbar" aria-label="Top">
-      <div class="brand"><span class="brand-dot"></span><span>BOA</span></div>
+      <div class="brand"><span class="brand-dot"></span><span id="brand-text"></span></div>
       <div class="nav-actions" role="group" aria-label="Top actions">
         <a class="btn" href="#people">The Crew</a>
         <a class="btn btn-primary" href="#calendar">Trip Details</a>
       </div>
     </div>
 
-    <!-- HERO (all text & image populated by app.js from data.json) -->
+    <!-- HERO -->
     <header class="hero" id="hero">
-      <h1><!-- populated --></h1>
-      <p class="hero-sub"><!-- populated --></p>
+      <h1></h1>
+      <p class="hero-sub"></p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#"><!-- primary CTA --></a>
-        <a class="btn" href="#"><!-- secondary CTA --></a>
+        <a class="btn btn-primary" id="cta-primary" href="#"></a>
+        <a class="btn" id="cta-secondary" href="#"></a>
       </div>
 
       <div class="hero-media">
         <div class="frame surface">
-          <img src="" alt="Trip hero image" />
+          <img id="hero-image" src="" alt="Trip hero image" />
         </div>
       </div>
     </header>
 
-    <!-- PEOPLE (spotlight + expandable full crew) -->
+    <!-- PEOPLE -->
     <section id="people" class="section" aria-labelledby="people-title">
-      <h2 id="people-title">People</h2>
-      <p class="muted">Spotlight on 4 riders. Expand to see the full crew.</p>
+      <h2 id="people-title"></h2>
+      <p id="people-intro" class="muted"></p>
 
-      <!-- Filled by app.js -->
       <div id="crew-spotlight" class="grid-people spotlight-4"></div>
 
       <div class="people-actions">
-        <button class="btn" id="toggleCrew" type="button" aria-expanded="false" aria-controls="crew-more">
-          And more legends — show all
-        </button>
+        <button class="btn" id="toggleCrew" type="button" aria-expanded="false" aria-controls="crew-more"></button>
       </div>
 
-      <!-- Hidden until toggled; filled by app.js -->
       <div id="crew-more" class="grid-people" hidden></div>
     </section>
 
     <!-- CALENDAR -->
     <section id="calendar" class="section" aria-labelledby="cal-title">
-      <h2 id="cal-title">Trip Calendar</h2>
-      <div class="accordion"><!-- days injected by app.js --></div>
+      <h2 id="cal-title"></h2>
+      <div class="accordion"></div>
     </section>
 
     <!-- GEAR LIST -->
     <section id="gear" class="section" aria-labelledby="gear-title">
-      <h2 id="gear-title">Gear List & Advice</h2>
-      <ul class="list" role="list"><!-- items injected by app.js --></ul>
+      <h2 id="gear-title"></h2>
+      <ul class="list" role="list"></ul>
     </section>
 
     <footer class="section" style="padding-block:32px;">
-      <p class="muted">Myoko / Nagano, Japan — Jan 2026 • Built fast, left imperfect on purpose.</p>
+      <p class="muted" id="footer-text"></p>
     </footer>
 
   </div>
 
-  <!-- App script: loads data.json and populates the page -->
   <script src="app.js" defer></script>
 </body>
 </html>
