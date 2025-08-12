@@ -85,12 +85,54 @@ a{color:inherit;text-decoration:none}
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: var(--hero-bg-image, url('images/hero.png'));
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: 
+    var(--hero-bg-image, url('images/hero.png')),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 90%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 95%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 85%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+  background-size: 
+    cover,
+    200px 200px,
+    150px 150px,
+    180px 180px,
+    120px 120px;
+  background-position: 
+    center,
+    20% 80%,
+    80% 90%,
+    40% 95%,
+    90% 85%;
+  background-repeat: 
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
   width: 100%;
   z-index: -1;
+}
+
+/* Snow-like blend effect at bottom of hero */
+.hero::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40vh;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 10%,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.65) 70%,
+    rgba(255, 255, 255, 0.9) 90%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero h1 {
@@ -195,6 +237,173 @@ a{color:inherit;text-decoration:none}
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
+/* ====== Countdown Section ====== */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 60px;
+}
+
+.countdown-number {
+  font-family: 'Barlow Semi Condensed', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.countdown-label {
+  font-family: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-separator {
+  font-family: 'Barlow Semi Condensed', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: -0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Snowboarder Animation */
+.snowboarder-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 60px;
+  position: relative;
+}
+
+.snowboarder {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.snowboarder-body {
+  animation: snowboarder-vibrate 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.dynamic-lines {
+  animation: dynamic-lines 1.5s ease-in-out infinite;
+}
+
+@keyframes snowboarder-vibrate {
+  0%, 100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-1px) rotate(-1deg);
+  }
+  75% {
+    transform: translateX(1px) rotate(1deg);
+  }
+}
+
+@keyframes dynamic-lines {
+  0%, 100% {
+    opacity: 0.2;
+    transform: translateX(0px);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(-2px);
+  }
+}
+
+/* Mobile responsive styles for countdown */
+@media (max-width: 768px) {
+  .countdown-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .countdown-timer {
+    gap: 0.25rem;
+  }
+  
+  .countdown-item {
+    min-width: 50px;
+  }
+  
+  .countdown-number {
+    font-size: 2rem;
+  }
+  
+  .countdown-label {
+    font-size: 0.7rem;
+  }
+  
+  .countdown-separator {
+    font-size: 1.5rem;
+    margin-top: -0.25rem;
+  }
+  
+  .snowboarder-container {
+    width: 60px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-container {
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+  }
+  
+  .countdown-number {
+    font-size: 1.5rem;
+  }
+  
+  .countdown-label {
+    font-size: 0.6rem;
+  }
+  
+  .countdown-separator {
+    font-size: 1.25rem;
+  }
+  
+  .snowboarder-container {
+    width: 50px;
+    height: 35px;
+  }
+}
+
 /* Remove the old hero media section since we're overlaying text */
 .hero-media{display: none}
 
@@ -207,12 +416,44 @@ main {
 /* ====== People Section ====== */
 .people {
   padding: var(--space-8) var(--space-4);
-  background: transparent;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  position: relative;
+  margin-top: -1px; /* Remove any potential border line */
+  border-top: none !important; /* Remove the section border */
+}
+
+/* Subtle snow texture in people section */
+.people::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 30%),
+    radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.7) 0%, transparent 35%);
+  background-size: 100px 100px, 80px 80px, 120px 120px;
+  background-position: 10% 20%, 90% 30%, 50% 10%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ====== People ====== */
 /* Remove conflicting rule */
 /* #people h2, #calendar h2, #gear h2{font-size:var(--fs-h2); margin:0 0 var(--space-4) 0} */
+
+/* Ensure people content appears above snow texture */
+.people > * {
+  position: relative;
+  z-index: 1;
+}
 /* ====== People Grid ====== */
 .grid-people{
   display: grid;

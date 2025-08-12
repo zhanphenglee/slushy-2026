@@ -16,6 +16,63 @@
   <header class="hero" id="hero">
     <h1></h1>
     <p class="hero-sub"></p>
+    
+    <!-- COUNTDOWN -->
+    <div class="countdown-container">
+      <div class="countdown-timer">
+        <div class="countdown-item">
+          <span class="countdown-number" id="days">00</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="hours">00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="minutes">00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="seconds">00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+      
+      <!-- Snowboarding Animation -->
+      <div class="snowboarder-container">
+        <svg class="snowboarder" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Snowboarder -->
+          <g class="snowboarder-body">
+            <!-- Head -->
+            <circle cx="30" cy="15" r="4" fill="none" stroke="white" stroke-width="1.5"/>
+            <!-- Body -->
+            <line x1="30" y1="19" x2="30" y2="35" stroke="white" stroke-width="2"/>
+            <!-- Arms -->
+            <line x1="25" y1="25" x2="35" y2="25" stroke="white" stroke-width="1.5"/>
+            <!-- Legs -->
+            <line x1="30" y1="35" x2="25" y2="45" stroke="white" stroke-width="2"/>
+            <line x1="30" y1="35" x2="35" y2="45" stroke="white" stroke-width="2"/>
+            <!-- Snowboard -->
+            <ellipse cx="30" cy="48" rx="8" ry="2" fill="none" stroke="white" stroke-width="2"/>
+          </g>
+          
+          <!-- Dynamic lines behind -->
+          <g class="dynamic-lines">
+            <line x1="20" y1="20" x2="15" y2="22" stroke="white" stroke-width="1" opacity="0.6"/>
+            <line x1="18" y1="25" x2="13" y2="27" stroke="white" stroke-width="1" opacity="0.4"/>
+            <line x1="16" y1="30" x2="11" y2="32" stroke="white" stroke-width="1" opacity="0.2"/>
+          </g>
+          
+          <!-- Mountain outline -->
+          <path d="M0 50 L20 30 L40 40 L60 25 L80 35 L100 45 L100 60 L0 60 Z" 
+                fill="none" stroke="white" stroke-width="1" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+    
     <div class="cta-row">
       <a class="btn btn-primary" id="cta-primary" href="#people">The Crew</a>
       <a class="btn" id="cta-secondary" href="#calendar">Trip Details</a>

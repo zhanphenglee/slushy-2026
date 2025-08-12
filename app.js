@@ -189,6 +189,45 @@ function ensureVideoMuted(video) {
   }
 }
 
+// Countdown Timer Function
+function updateCountdown() {
+  const targetDate = new Date('2026-01-17T00:00:00');
+  const now = new Date();
+  const difference = targetDate - now;
+
+  if (difference > 0) {
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    // Update DOM elements
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+
+    if (daysElement) daysElement.textContent = days.toString().padStart(2, '0');
+    if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
+    if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
+    if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
+  } else {
+    // Countdown has ended
+    const countdownElements = ['days', 'hours', 'minutes', 'seconds'];
+    countdownElements.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) element.textContent = '00';
+    });
+  }
+}
+
+// Initialize countdown
+function initCountdown() {
+  updateCountdown(); // Initial update
+  setInterval(updateCountdown, 1000); // Update every second
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   await load();
+  initCountdown(); // Initialize countdown after page loads
 });
